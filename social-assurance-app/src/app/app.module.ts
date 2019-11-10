@@ -9,13 +9,15 @@ import { MaterialModule } from './material-modules';
 import { BrandTrustFormComponent } from './components/brand-trust-form/brand-trust-form.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { AdminFormPageComponent } from './pages/admin-form-page/admin-form-page.component';
+import { AssociateFormPageComponent } from './pages/associate-form-page/associate-form-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BrandTrustFormComponent,
     LoginPageComponent,
-    AdminFormPageComponent
+    AdminFormPageComponent,
+    AssociateFormPageComponent
   ],
   imports: [
     BrowserModule,
