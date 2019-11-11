@@ -4,6 +4,6 @@ export class BrandTrust {
         public incitingIncidents: string,
         public conflict: string,
         public callToAction: string,
-        public socialProof: string,
+        public vision: string,
     ) { }
 }
