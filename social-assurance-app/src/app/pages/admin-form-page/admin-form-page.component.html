@@ -4,7 +4,7 @@
             <form [formGroup]="firstFormGroup">
                 <ng-template matStepLabel>Brand Trust Form</ng-template>
                 <brand-trust-form></brand-trust-form>
-                <div>
+                <div id="buttons">
                     <button mat-button matStepperNext>Next</button>
                 </div>
             </form>
@@ -13,7 +13,7 @@
             <form [formGroup]="secondFormGroup">
                 <ng-template matStepLabel>Innovation Trust Form</ng-template>
                 <innovation-trust-form></innovation-trust-form>
-                <div>
+                <div id="buttons">
                     <button mat-button matStepperPrevious>Back</button>
                     <button mat-button matStepperNext>Next</button>
                 </div>
@@ -23,7 +23,7 @@
             <form [formGroup]="thirdFormGroup">
                 <ng-template matStepLabel>Personal Trust Form</ng-template>
                 <personal-trust-form></personal-trust-form>
-                <div>
+                <div id="buttons">
                     <button mat-button matStepperPrevious>Back</button>
                 </div>
             </form>
