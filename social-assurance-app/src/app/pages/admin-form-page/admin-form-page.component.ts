@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { BrandTrust } from 'src/app/models/brand-trust';
+import { InnovationTrust } from 'src/app/models/innovation-trust';
+import { PersonalTrust } from 'src/app/models/personal-trust';
 
 @Component({
   selector: 'app-admin-form-page',
@@ -39,9 +42,11 @@ export class AdminFormPageComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.firstFormGroup.value);
-    console.log(this.secondFormGroup.value);
-    console.log(this.thirdFormGroup.value);
-
+    const brandTrust = this.firstFormGroup.value as BrandTrust;
+    const innovationTrust = this.secondFormGroup.value as InnovationTrust;
+    const personalTrust = this.thirdFormGroup.value as PersonalTrust;
+    console.log(brandTrust);
+    console.log(innovationTrust);
+    console.log(personalTrust);
   }
 }
