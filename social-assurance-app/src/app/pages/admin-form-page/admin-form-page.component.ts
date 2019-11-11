@@ -24,10 +24,17 @@ export class AdminFormPageComponent implements OnInit {
       vision: ['', Validators.required],
     });
     this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required]
+      relativeTrust: ['', Validators.required],
+      userExperience: ['', Validators.required],
+      promise: ['', Validators.required],
+      socialProof: ['', Validators.required],
     });
     this.thirdFormGroup = this._formBuilder.group({
-      thirdCtrl: ['', Validators.required]
+      connection: ['', Validators.required],
+      control: ['', Validators.required],
+      consistency: ['', Validators.required],
+      commitment: ['', Validators.required],
+      coCreation: ['', Validators.required],
     });
   }
 

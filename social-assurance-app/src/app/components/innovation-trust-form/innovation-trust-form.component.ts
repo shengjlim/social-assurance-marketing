@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormInfoService } from 'src/app/services/form-info.service';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { InnovationTrust } from 'src/app/models/innovation-trust';
 
 @Component({
@@ -10,25 +10,10 @@ import { InnovationTrust } from 'src/app/models/innovation-trust';
 })
 export class InnovationTrustFormComponent implements OnInit {
 
-  constructor(
-    private formInfoService: FormInfoService,
-  ) { }
+  @Input() form: FormGroup
+
+  constructor() { }
 
   ngOnInit() {
-  }
-
-  relativeTrust = new FormControl('', Validators.required);
-  userExperience = new FormControl('', Validators.required);
-  promise = new FormControl('', Validators.required);
-  socialProof = new FormControl('', Validators.required);
-
-  addInnovationTrust() {
-    const innovationTrust = new InnovationTrust(
-      this.relativeTrust.value,
-      this.userExperience.value,
-      this.promise.value,
-      this.socialProof.value
-    )
-    this.formInfoService.innovationTrust = innovationTrust;
   }
 }

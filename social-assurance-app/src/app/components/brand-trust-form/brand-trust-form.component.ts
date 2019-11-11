@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormControl, Validators, FormGroup } from '@angular/forms';
-import { FormInfoService } from '../../services/form-info.service';
-import { BrandTrust } from 'src/app/models/brand-trust';
+import { FormGroup } from '@angular/forms';
+
 
 @Component({
   selector: 'brand-trust-form',

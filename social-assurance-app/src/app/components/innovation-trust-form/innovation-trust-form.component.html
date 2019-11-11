@@ -1,39 +1,31 @@
-<mat-card-title>Innovation Trust</mat-card-title>
+<div [formGroup]="form">
+    <mat-card-title>Innovation Trust</mat-card-title>
 
-<p id="label"><strong>Relative Trust</strong> — What alternatives exist to your Innovation and how do people
-    perceive that they could
-    switch?</p>
-<mat-form-field id="formfield" floatLabel="never">
-    <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5"
-        [formControl]="relativeTrust" placeholder="Enter Response Here"></textarea>
-    <mat-error *ngIf="relativeTrust.hasError('required')">This field is <strong>required</strong></mat-error>
-</mat-form-field>
+    <p id="label"><strong>Relative Trust</strong> — What alternatives exist to your Innovation and how do people
+        perceive that they could switch?</p>
+    <mat-form-field id="formfield" floatLabel="never">
+        <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="5" [formControlName]="'relativeTrust'" placeholder="Enter Response Here"></textarea>
+    </mat-form-field>
 
-<p id="label"><strong>User Experience</strong> — How do you help people overcome the hurdles understanding and being
-    active with your innovation?</p>
-<mat-form-field id="formfield" floatLabel="never">
-    <textarea matInput rows="5" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
-        cdkAutosizeMaxRows="5" [formControl]="userExperience" placeholder="Enter Response Here"></textarea>
-    <mat-error *ngIf="userExperience.hasError('required')">This field is <strong>required</strong></mat-error>
-</mat-form-field>
+    <p id="label"><strong>User Experience</strong> — How do you help people overcome the hurdles understanding and being
+        active with your innovation?</p>
+    <mat-form-field id="formfield" floatLabel="never">
+        <textarea matInput rows="5" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="5" [formControlName]="'userExperience'" placeholder="Enter Response Here"></textarea>
+    </mat-form-field>
 
-<p id="label"><strong>The Promise</strong> — What is the promise that your innovation is making?
-</p>
-<mat-form-field id="formfield" floatLabel="never">
-    <textarea matInput rows="5" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
-        cdkAutosizeMaxRows="5" [formControl]="promise" placeholder="Enter Response Here"></textarea>
-    <mat-error *ngIf="promise.hasError('required')">This field is <strong>required</strong></mat-error>
-</mat-form-field>
+    <p id="label"><strong>The Promise</strong> — What is the promise that your innovation is making?
+    </p>
+    <mat-form-field id="formfield" floatLabel="never">
+        <textarea matInput rows="5" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="5" [formControlName]="'promise'" placeholder="Enter Response Here"></textarea>
+    </mat-form-field>
 
-<p id="label"><strong>Social Proof</strong> — How do users of your innovation validate it to others?
-</p>
-<mat-form-field id="formfield" floatLabel="never">
-    <textarea matInput rows="5" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
-        cdkAutosizeMaxRows="5" [formControl]="socialProof" placeholder="Enter Response Here"></textarea>
-    <mat-error *ngIf="socialProof.hasError('required')">This field is <strong>required</strong></mat-error>
-</mat-form-field>
-
-<div id="buttons">
-    <button mat-button matStepperPrevious>Back</button>
-    <button mat-button (click)="addInnovationTrust()" matStepperNext>Next</button>
+    <p id="label"><strong>Social Proof</strong> — How do users of your innovation validate it to others?
+    </p>
+    <mat-form-field id="formfield" floatLabel="never">
+        <textarea matInput rows="5" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="5" [formControlName]="'socialProof'" placeholder="Enter Response Here"></textarea>
+    </mat-form-field>
 </div>

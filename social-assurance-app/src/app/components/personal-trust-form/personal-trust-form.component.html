@@ -1,45 +1,37 @@
-<mat-card-title>Personal Trust</mat-card-title>
+<div [formGroup]="form">
+    <mat-card-title>Personal Trust</mat-card-title>
+    <p id="label"><strong>Connection</strong> - How do people see you as both familiar and unique?</p>
+    <mat-form-field id="formfield" floatLabel="never">
+        <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="5" [formControlName]="'connection'" placeholder="Enter Response Here"></textarea>
+    </mat-form-field>
 
-<p id="label"><strong>Connection</strong> - How do people see you as both familiar and unique?</p>
-<mat-form-field id="formfield" floatLabel="never">
-    <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5"
-        [formControl]="connection" placeholder="Enter Response Here"></textarea>
-    <mat-error *ngIf="connection.hasError('required')">This field is <strong>required</strong></mat-error>
-</mat-form-field>
+    <p id="label"><strong>Control</strong> — What is the necessary objection to overcome the doubt and suspicion of
+        working with you?</p>
+    <mat-form-field id="formfield" floatLabel="never">
+        <textarea matInput rows="5" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="5" [formControlName]="'control'" placeholder="Enter Response Here"></textarea>
+    </mat-form-field>
 
-<p id="label"><strong>Control</strong> — What is the necessary objection to overcome the doubt and suspicion of
-    working with you?</p>
-<mat-form-field id="formfield" floatLabel="never">
-    <textarea matInput rows="5" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
-        cdkAutosizeMaxRows="5" [formControl]="control" placeholder="Enter Response Here"></textarea>
-    <mat-error *ngIf="control.hasError('required')">This field is <strong>required</strong></mat-error>
-</mat-form-field>
+    <p id="label"><strong>Consistency</strong> — How do people know that you have been reliable and will continue to be
+        reliable in the future?
+    </p>
+    <mat-form-field id="formfield" floatLabel="never">
+        <textarea matInput rows="5" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="5" [formControlName]="'consistency'" placeholder="Enter Response Here"></textarea>
+    </mat-form-field>
 
-<p id="label"><strong>Consistency</strong> — How do people know that you have been reliable and will continue to be
-    reliable in the future?
-</p>
-<mat-form-field id="formfield" floatLabel="never">
-    <textarea matInput rows="5" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
-        cdkAutosizeMaxRows="5" [formControl]="consistency" placeholder="Enter Response Here"></textarea>
-    <mat-error *ngIf="consistency.hasError('required')">This field is <strong>required</strong></mat-error>
-</mat-form-field>
+    <p id="label"><strong>Commitment</strong> — How do you show commitment, and ask for a commitment to you?
+    </p>
+    <mat-form-field id="formfield" floatLabel="never">
+        <textarea matInput rows="5" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="5" [formControlName]="'commitment'" placeholder="Enter Response Here"></textarea>
+    </mat-form-field>
 
-<p id="label"><strong>Commitment</strong> — How do you show commitment, and ask for a commitment to you?
-</p>
-<mat-form-field id="formfield" floatLabel="never">
-    <textarea matInput rows="5" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
-        cdkAutosizeMaxRows="5" [formControl]="commitment" placeholder="Enter Response Here"></textarea>
-    <mat-error *ngIf="commitment.hasError('required')">This field is <strong>required</strong></mat-error>
-</mat-form-field>
-
-<p id="label"><strong>Co-Creation</strong> — How does someone take an active role in the building of your product?
-</p>
-<mat-form-field id="formfield" floatLabel="never">
-    <textarea matInput rows="5" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
-        cdkAutosizeMaxRows="5" [formControl]="coCreation" placeholder="Enter Response Here"></textarea>
-    <mat-error *ngIf="coCreation.hasError('required')">This field is <strong>required</strong></mat-error>
-</mat-form-field>
-<div id="buttons">
-    <button mat-button matStepperPrevious>Back</button>
-    <button mat-raised-button color="primary" (click)="onSubmit()">Submit</button>
+    <p id="label"><strong>Co-Creation</strong> — How does someone take an active role in the building of your product?
+    </p>
+    <mat-form-field id="formfield" floatLabel="never">
+        <textarea matInput rows="5" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="5" [formControlName]="'coCreation'" placeholder="Enter Response Here"></textarea>
+    </mat-form-field>
 </div>
