@@ -6,6 +6,7 @@ import { AdminFormPageComponent } from './pages/admin-form-page/admin-form-page.
 const routes: Routes = [
   { path: 'login', component: LoginPageComponent },
   { path: 'adminform', component: AdminFormPageComponent },
+  { path: '', redirectTo: '/login', pathMatch: 'full' }
 ];
 
 @NgModule({
