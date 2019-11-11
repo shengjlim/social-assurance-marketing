@@ -1,45 +1,42 @@
-<mat-card-title>Brand Trust</mat-card-title>
+<div [formGroup]="form">
+    <mat-card-title>Brand Trust</mat-card-title>
 
-<p id="label"><strong>Associations</strong> — What are the mental cues connect symbols, people, or other brands to
-    your organizations?</p>
-<mat-form-field id="formfield" floatLabel="never">
-    <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5"
-        [formControl]="associations" placeholder="Enter Response Here"></textarea>
-    <mat-error *ngIf="associations.hasError('required')">This field is <strong>required</strong></mat-error>
-</mat-form-field>
+    <p id="label"><strong>Associations</strong> — What are the mental cues connect symbols, people, or other brands to
+        your organizations?</p>
+    <mat-form-field id="formfield" floatLabel="never">
+        <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="5" [formControlName]="'associations'" placeholder="Enter Response Here"></textarea>
+    </mat-form-field>
 
-<p id="label"><strong>Inciting Incidents</strong> — What are the two inciting incidents in your story? One starts
-    motion, the second gives your organization greater purpose.</p>
-<mat-form-field id="formfield" floatLabel="never">
-    <textarea matInput rows="5" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
-        cdkAutosizeMaxRows="5" [formControl]="incitingIncidents" placeholder="Enter Response Here"></textarea>
-    <mat-error *ngIf="incitingIncidents.hasError('required')">This field is <strong>required</strong></mat-error>
-</mat-form-field>
+    <p id="label"><strong>Inciting Incidents</strong> — What are the two inciting incidents in your story? One starts
+        motion, the second gives your organization greater purpose.</p>
+    <mat-form-field id="formfield" floatLabel="never">
+        <textarea matInput rows="5" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="5" [formControlName]="'incitingIncidents'" placeholder="Enter Response Here"></textarea>
+    </mat-form-field>
 
-<p id="label"><strong>Conflict</strong> — What is the struggle that your organization helps customers to overcome?
-</p>
-<mat-form-field id="formfield" floatLabel="never">
-    <textarea matInput rows="5" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
-        cdkAutosizeMaxRows="5" [formControl]="conflict" placeholder="Enter Response Here"></textarea>
-    <mat-error *ngIf="conflict.hasError('required')">This field is <strong>required</strong></mat-error>
-</mat-form-field>
+    <p id="label"><strong>Conflict</strong> — What is the struggle that your organization helps customers to overcome?
+    </p>
+    <mat-form-field id="formfield" floatLabel="never">
+        <textarea matInput rows="5" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="5" [formControlName]="'conflict'" placeholder="Enter Response Here"></textarea>
+    </mat-form-field>
 
-<p id="label"><strong>Call to Action</strong> — How do you inviete people to engage and join in your organization's
-    story?
-</p>
-<mat-form-field id="formfield" floatLabel="never">
-    <textarea matInput rows="5" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
-        cdkAutosizeMaxRows="5" [formControl]="callToAction" placeholder="Enter Response Here"></textarea>
-    <mat-error *ngIf="callToAction.hasError('required')">This field is <strong>required</strong></mat-error>
-</mat-form-field>
+    <p id="label"><strong>Call to Action</strong> — How do you inviete people to engage and join in your organization's
+        story?
+    </p>
+    <mat-form-field id="formfield" floatLabel="never">
+        <textarea matInput rows="5" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="5" [formControlName]="'callToAction'" placeholder="Enter Response Here"></textarea>
+    </mat-form-field>
 
-<p id="label"><strong>Vision</strong> — How will your organization make the world a better place?</p>
-<mat-form-field id="formfield" floatLabel="never">
-    <textarea matInput rows="5" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
-        cdkAutosizeMaxRows="5" [formControl]="vision" placeholder="Enter Response Here"></textarea>
-    <mat-error *ngIf="vision.hasError('required')">This field is <strong>required</strong></mat-error>
-</mat-form-field>
+    <p id="label"><strong>Vision</strong> — How will your organization make the world a better place?</p>
+    <mat-form-field id="formfield" floatLabel="never">
+        <textarea matInput rows="5" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="5" [formControlName]="'vision'" placeholder="Enter Response Here"></textarea>
+    </mat-form-field>
 
-<div id="buttons">
-    <button mat-button matStepperNext (click)="addBrandTrust()">Next</button>
+    <div id="buttons">
+        <button mat-button matStepperNext (click)="addBrandTrust()">Next</button>
+    </div>
 </div>

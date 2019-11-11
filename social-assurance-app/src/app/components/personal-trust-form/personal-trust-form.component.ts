@@ -32,8 +32,8 @@ export class PersonalTrustFormComponent implements OnInit {
       this.coCreation.value
     )
     this.formInfoService.personalTrust = personalTrust
-    console.log(this.formInfoService.brandTrust);
-    console.log(this.formInfoService.innovationTrust);
-    console.log(this.formInfoService.personalTrust);
+    // console.log(this.formInfoService.brandTrust);
+    // console.log(this.formInfoService.innovationTrust);
+    // console.log(this.formInfoService.personalTrust);
   }
 }

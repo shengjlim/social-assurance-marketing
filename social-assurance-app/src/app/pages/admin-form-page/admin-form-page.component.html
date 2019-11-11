@@ -3,7 +3,7 @@
         <mat-step [stepControl]="firstFormGroup">
             <form [formGroup]="firstFormGroup">
                 <ng-template matStepLabel>Brand Trust Form</ng-template>
-                <brand-trust-form></brand-trust-form>
+                <brand-trust-form [form]="firstFormGroup"></brand-trust-form>
             </form>
         </mat-step>
         <mat-step [stepControl]="secondFormGroup">
@@ -17,6 +17,7 @@
                 <ng-template matStepLabel>Personal Trust Form</ng-template>
                 <personal-trust-form></personal-trust-form>
             </form>
+            <button (click)="onSubmit()"></button>
         </mat-step>
     </mat-horizontal-stepper>
 </div>

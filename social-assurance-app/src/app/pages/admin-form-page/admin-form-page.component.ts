@@ -17,7 +17,11 @@ export class AdminFormPageComponent implements OnInit {
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required]
+      associations: ['', Validators.required],
+      incitingIncidents: ['', Validators.required],
+      conflict: ['', Validators.required],
+      callToAction: ['', Validators.required],
+      vision: ['', Validators.required],
     });
     this.secondFormGroup = this._formBuilder.group({
       secondCtrl: ['', Validators.required]
@@ -27,4 +31,10 @@ export class AdminFormPageComponent implements OnInit {
     });
   }
 
+  onSubmit() {
+    console.log(this.firstFormGroup.value);
+    console.log(this.secondFormGroup.value);
+    console.log(this.thirdFormGroup.value);
+
+  }
 }
