@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { BrandTrust } from 'src/app/models/brand-trust';
 import { InnovationTrust } from 'src/app/models/innovation-trust';
 import { PersonalTrust } from 'src/app/models/personal-trust';
@@ -20,24 +20,24 @@ export class AdminFormPageComponent implements OnInit {
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
-      associations: ['', Validators.required],
-      incitingIncidents: ['', Validators.required],
-      conflict: ['', Validators.required],
-      callToAction: ['', Validators.required],
-      vision: ['', Validators.required],
+      associations: [''],
+      incitingIncidents: [''],
+      conflict: [''],
+      callToAction: [''],
+      vision: [''],
     });
     this.secondFormGroup = this._formBuilder.group({
-      relativeTrust: ['', Validators.required],
-      userExperience: ['', Validators.required],
-      promise: ['', Validators.required],
-      socialProof: ['', Validators.required],
+      relativeTrust: [''],
+      userExperience: [''],
+      promise: [''],
+      socialProof: [''],
     });
     this.thirdFormGroup = this._formBuilder.group({
-      connection: ['', Validators.required],
-      control: ['', Validators.required],
-      consistency: ['', Validators.required],
-      commitment: ['', Validators.required],
-      coCreation: ['', Validators.required],
+      connection: [''],
+      control: [''],
+      consistency: [''],
+      commitment: [''],
+      coCreation: [''],
     });
   }
 
