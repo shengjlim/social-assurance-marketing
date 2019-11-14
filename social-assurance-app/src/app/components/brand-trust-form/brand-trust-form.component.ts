@@ -21,8 +21,14 @@ export class BrandTrustFormComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.associationsPlaceHolder = "yooooo";
-    console.log(this.readOnly);
+    if (this.readOnly) {
+      this.setPlaceholderText();
+    }
+  }
+
+  setPlaceholderText() {
+    //TODO: Set the text from the admin to the placeholders
+    // this.assoctationsPlaceholder = this.apiServiceCallThingy.getAssociation;
   }
 
 }

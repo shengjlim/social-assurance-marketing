@@ -21,5 +21,13 @@ export class InnovationTrustFormComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    if (this.readOnly) {
+      this.setPlaceholderText();
+    }
+  }
+
+  setPlaceholderText(): void {
+    //TODO: Set the text from the admin to the placeholders
+    // this.trustPlaceholder = this.apiServiceCallThingy.getAssociation;
   }
 }
