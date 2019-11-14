@@ -11,6 +11,12 @@ import { InnovationTrust } from 'src/app/models/innovation-trust';
 export class InnovationTrustFormComponent implements OnInit {
 
   @Input() form: FormGroup
+  @Input() readOnly: Boolean
+
+  trustPlaceholder: string;
+  userPlaceholder: string;
+  promisePlaceholder: string;
+  socialProofPlaceholder: string;
 
   constructor() { }
 
