@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { PersonalTrust } from 'src/app/models/personal-trust';
 
 @Component({
   selector: 'app-associate-form-page',
@@ -36,6 +37,13 @@ export class AssociateFormPageComponent implements OnInit {
       commitment: [''],
       coCreation: [''],
     });
+  }
+
+  onSubmit() {
+    const personalTrust = this.thirdFormGroup.value as PersonalTrust;
+    console.log(personalTrust);
+
+    // TODO: Add associate personal trust to firebase
   }
 
 }

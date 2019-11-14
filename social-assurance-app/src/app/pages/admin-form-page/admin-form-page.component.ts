@@ -48,5 +48,7 @@ export class AdminFormPageComponent implements OnInit {
     console.log(brandTrust);
     console.log(innovationTrust);
     console.log(personalTrust);
+
+    //TODO: Add admin brandtrust/innovationtrust/personalTrust to Firebase
   }
 }
