@@ -1,7 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormInfoService } from 'src/app/services/form-info.service';
-import { FormControl, Validators, FormGroup } from '@angular/forms';
-import { InnovationTrust } from 'src/app/models/innovation-trust';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'innovation-trust-form',
