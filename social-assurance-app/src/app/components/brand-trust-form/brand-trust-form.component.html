@@ -4,35 +4,49 @@
     <p id="label"><strong>Associations</strong> — What are the mental cues connect symbols, people, or other brands to
         your organizations?</p>
     <mat-form-field id="formfield" floatLabel="never">
-        <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+        <textarea *ngIf="readOnly" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="5" [formControlName]="'associations'" placeholder="{{associationsPlaceholder}}"
+            readonly></textarea>
+        <textarea *ngIf="!readOnly" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
             cdkAutosizeMaxRows="5" [formControlName]="'associations'" placeholder="Enter Response Here"></textarea>
     </mat-form-field>
 
     <p id="label"><strong>Inciting Incidents</strong> — What are the two inciting incidents in your story? One starts
         motion, the second gives your organization greater purpose.</p>
     <mat-form-field id="formfield" floatLabel="never">
-        <textarea matInput rows="5" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+        <textarea *ngIf="readOnly" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="5" [formControlName]="'incitingIncidents'" placeholder="{{incidentsPlaceholder}}"
+            readonly></textarea>
+        <textarea *ngIf="!readOnly" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
             cdkAutosizeMaxRows="5" [formControlName]="'incitingIncidents'" placeholder="Enter Response Here"></textarea>
     </mat-form-field>
 
     <p id="label"><strong>Conflict</strong> — What is the struggle that your organization helps customers to overcome?
     </p>
     <mat-form-field id="formfield" floatLabel="never">
-        <textarea matInput rows="5" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+        <textarea *ngIf="readOnly" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="5" [formControlName]="'conflict'" placeholder="{{conflictPlaceholder}}"
+            readonly></textarea>
+        <textarea *ngIf="!readOnly" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
             cdkAutosizeMaxRows="5" [formControlName]="'conflict'" placeholder="Enter Response Here"></textarea>
     </mat-form-field>
 
-    <p id="label"><strong>Call to Action</strong> — How do you inviete people to engage and join in your organization's
+    <p id="label"><strong>Call to Action</strong> — How do you invite people to engage and join in your organization's
         story?
     </p>
     <mat-form-field id="formfield" floatLabel="never">
-        <textarea matInput rows="5" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+        <textarea *ngIf="readOnly" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="5" [formControlName]="'callToAction'" placeholder="{{actionPlaceholder}}"
+            readonly></textarea>
+        <textarea *ngIf="!readOnly" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
             cdkAutosizeMaxRows="5" [formControlName]="'callToAction'" placeholder="Enter Response Here"></textarea>
     </mat-form-field>
 
     <p id="label"><strong>Vision</strong> — How will your organization make the world a better place?</p>
     <mat-form-field id="formfield" floatLabel="never">
-        <textarea matInput rows="5" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+        <textarea *ngIf="readOnly" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="5" [formControlName]="'vision'" placeholder="{{visionPlaceholder}}" readonly></textarea>
+        <textarea *ngIf="!readOnly" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
             cdkAutosizeMaxRows="5" [formControlName]="'vision'" placeholder="Enter Response Here"></textarea>
     </mat-form-field>
 </div>

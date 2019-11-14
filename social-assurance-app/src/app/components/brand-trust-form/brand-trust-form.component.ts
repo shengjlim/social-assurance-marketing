@@ -9,10 +9,20 @@ import { FormGroup } from '@angular/forms';
 })
 export class BrandTrustFormComponent implements OnInit {
   @Input() form: FormGroup
+  @Input() readOnly: Boolean
+
+  associationsPlaceHolder: String;
+  incidentsPlaceholder: String;
+  conflictPlaceHolder: String;
+  actionPlaceholder: String;
+  visionPlaceHolder: String;
 
   constructor(
   ) { }
 
   ngOnInit() {
+    this.associationsPlaceHolder = "yooooo";
+    console.log(this.readOnly);
   }
+
 }
