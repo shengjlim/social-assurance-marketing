@@ -3,6 +3,10 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { BrandTrust } from 'src/app/models/brand-trust';
 import { InnovationTrust } from 'src/app/models/innovation-trust';
 import { PersonalTrust } from 'src/app/models/personal-trust';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { FirebaseAuth } from '@angular/fire';
+import { Router } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-admin-form-page',
@@ -16,7 +20,13 @@ export class AdminFormPageComponent implements OnInit {
   secondFormGroup: FormGroup;
   thirdFormGroup: FormGroup;
 
-  constructor(private _formBuilder: FormBuilder) { }
+  constructor(private _formBuilder: FormBuilder, private db: AngularFirestore, router: Router, auth: AngularFireAuth) {
+    auth.user.subscribe(user => {
+      if(user === null){
+        router.navigate(['']);
+      }
+    });
+  }
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
@@ -50,5 +60,8 @@ export class AdminFormPageComponent implements OnInit {
     console.log(personalTrust);
 
     //TODO: Add admin brandtrust/innovationtrust/personalTrust to Firebase
+    this.db.collection('brand').add(brandTrust);
+    this.db.collection('innovation').add(innovationTrust);
+    this.db.collection('personal').add(personalTrust);
   }
 }
