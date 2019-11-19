@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AngularFireAuth } from '@angular/fire/auth';
+
+import {LoginService} from './services/login-service.service'
 
 import { MaterialModule } from './material-modules';
 import { BrandTrustFormComponent } from './components/brand-trust-form/brand-trust-form.component';
@@ -43,7 +46,10 @@ import { InnovationTrustFormComponent } from './components/innovation-trust-form
       messagingSenderId: environment.firebaseConfig.messagingSenderId
     })
   ],
-  providers: [],
+  providers: [
+    AngularFireAuth,
+    LoginService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

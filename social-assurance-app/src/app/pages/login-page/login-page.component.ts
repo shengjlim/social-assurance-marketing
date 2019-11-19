@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from '../../services/login-service.service';
+import { Router } from '@angular/router';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-login-page',
@@ -7,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginPageComponent implements OnInit {
 
-  constructor() { }
+  public credentialForm: FormGroup;
+
+  constructor(public auth: LoginService, private router: Router) { }
 
   ngOnInit() {
+    this.credentialForm = new FormGroup({
+      email: new FormControl(''),
+      password: new FormControl('')
+    });
+  }
+
+  login(credentialFormValue): void {
+    this.auth.emailLogin(credentialFormValue.email, credentialFormValue.password);
   }
 
 }
