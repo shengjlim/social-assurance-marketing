@@ -1,1 +1,33 @@
-<p>associate-form-page works!</p>
+<div id="form">
+    <mat-horizontal-stepper #stepper>
+        <mat-step [stepControl]="firstFormGroup">
+            <form [formGroup]="firstFormGroup">
+                <ng-template matStepLabel>Brand Trust Form</ng-template>
+                <brand-trust-form [form]="firstFormGroup" [readOnly]="true"></brand-trust-form>
+                <div id="buttons">
+                    <button mat-button matStepperNext>Next</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup">
+            <form [formGroup]="secondFormGroup">
+                <ng-template matStepLabel>Innovation Trust Form</ng-template>
+                <innovation-trust-form [form]="secondFormGroup" [readOnly]="true"></innovation-trust-form>
+                <div id="buttons">
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button matStepperNext>Next</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="thirdFormGroup">
+            <form [formGroup]="thirdFormGroup">
+                <ng-template matStepLabel>Personal Trust Form</ng-template>
+                <personal-trust-form [form]="thirdFormGroup"></personal-trust-form>
+            </form>
+            <div id="buttons">
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-raised-button color="primary" (click)="onSubmit()">Submit</button>
+            </div>
+        </mat-step>
+    </mat-horizontal-stepper>
+</div>

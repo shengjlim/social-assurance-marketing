@@ -1,0 +1,37 @@
+<div [formGroup]="form">
+    <mat-card-title>Personal Trust</mat-card-title>
+    <p id="label"><strong>Connection</strong> — How do people see you as both familiar and unique?</p>
+    <mat-form-field id="formfield" floatLabel="never">
+        <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="5" [formControlName]="'connection'" placeholder="Enter Response Here"></textarea>
+    </mat-form-field>
+
+    <p id="label"><strong>Control</strong> — What is the necessary objection to overcome the doubt and suspicion of
+        working with you?</p>
+    <mat-form-field id="formfield" floatLabel="never">
+        <textarea matInput rows="5" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="5" [formControlName]="'control'" placeholder="Enter Response Here"></textarea>
+    </mat-form-field>
+
+    <p id="label"><strong>Consistency</strong> — How do people know that you have been reliable and will continue to be
+        reliable in the future?
+    </p>
+    <mat-form-field id="formfield" floatLabel="never">
+        <textarea matInput rows="5" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="5" [formControlName]="'consistency'" placeholder="Enter Response Here"></textarea>
+    </mat-form-field>
+
+    <p id="label"><strong>Commitment</strong> — How do you show commitment, and ask for a commitment to you?
+    </p>
+    <mat-form-field id="formfield" floatLabel="never">
+        <textarea matInput rows="5" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="5" [formControlName]="'commitment'" placeholder="Enter Response Here"></textarea>
+    </mat-form-field>
+
+    <p id="label"><strong>Co-Creation</strong> — How does someone take an active role in the building of your product?
+    </p>
+    <mat-form-field id="formfield" floatLabel="never">
+        <textarea matInput rows="5" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="5" [formControlName]="'coCreation'" placeholder="Enter Response Here"></textarea>
+    </mat-form-field>
+</div>

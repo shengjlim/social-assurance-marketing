@@ -1,0 +1,46 @@
+<div [formGroup]="form">
+    <mat-card-title>Innovation Trust</mat-card-title>
+
+    <p id="label"><strong>Relative Trust</strong> — What alternatives exist to your Innovation and how do people
+        perceive that they could switch?</p>
+    <mat-form-field id="formfield" floatLabel="never">
+        <textarea *ngIf="readOnly" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="5" [formControlName]="'relativeTrust'" placeholder="{{trustPlaceholder}}"
+            readonly></textarea>
+        <textarea *ngIf="!readOnly" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="5" [formControlName]="'relativeTrust'" placeholder="Enter Response Here"></textarea>
+    </mat-form-field>
+
+    <p id="label"><strong>User Experience</strong> — How do you help people overcome the hurdles understanding and being
+        active with your innovation?</p>
+    <mat-form-field id="formfield" floatLabel="never">
+        <textarea *ngIf="readOnly" matInput rows="5" cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+            cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5" [formControlName]="'userExperience'"
+            placeholder="{{userPlaceholder}}" readonly></textarea>
+        <textarea *ngIf="!readOnly" matInput rows="5" cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+            cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5" [formControlName]="'userExperience'"
+            placeholder="Enter Response Here"></textarea>
+    </mat-form-field>
+
+    <p id="label"><strong>The Promise</strong> — What is the promise that your innovation is making?
+    </p>
+    <mat-form-field id="formfield" floatLabel="never">
+        <textarea *ngIf="readOnly" matInput rows="5" cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+            cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5" [formControlName]="'promise'"
+            placeholder="{{promisePlaceholder}}" readonly></textarea>
+        <textarea *ngIf="!readOnly" matInput rows="5" cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+            cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5" [formControlName]="'promise'"
+            placeholder="Enter Response Here"></textarea>
+    </mat-form-field>
+
+    <p id="label"><strong>Social Proof</strong> — How do users of your innovation validate it to others?
+    </p>
+    <mat-form-field id="formfield" floatLabel="never">
+        <textarea *ngIf="readOnly" matInput rows="5" cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+            cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5" [formControlName]="'socialProof'"
+            placeholder="{{socialProofPlaceholder}}" readonly></textarea>
+        <textarea *ngIf="!readOnly" matInput rows="5" cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+            cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5" [formControlName]="'socialProof'"
+            placeholder="Enter Response Here"></textarea>
+    </mat-form-field>
+</div>
