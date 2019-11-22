@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { auth } from 'firebase';
-import { AdminFormPageComponent } from '../admin-form-page/admin-form-page.component';
+import { LoginService } from '../../services/login-service.service';
 import { Router } from '@angular/router';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-login-page',
@@ -11,45 +10,46 @@ import { Router } from '@angular/router';
 })
 export class LoginPageComponent implements OnInit {
 
-  auth: AngularFireAuth;
-  router: Router;
+  public credentialForm: FormGroup;
 
-  email;
-  password;
-
-  constructor(auth: AngularFireAuth, router: Router) {
-    this.auth = auth;
-    this.router = router;
-  }
+  constructor(public auth: LoginService, private router: Router) { }
 
   ngOnInit() {
+    this.credentialForm = new FormGroup({
+      email: new FormControl(''),
+      password: new FormControl('')
+    });
   }
 
-  login() {
-    console.log(this.email);
-    console.log(this.password);
-    if (this.email != undefined && this.password != undefined) {
-      this.auth.auth.signInWithEmailAndPassword(this.email, this.password).catch(function(error) {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        console.log(errorMessage);
-        // ...
-      });
-
-      this.auth.auth.onAuthStateChanged(function(user) {
-        if (user) {
-          // User is signed in.
-          //this.router.navigate(['/adminform']);
-          console.log("Logged in");
-          // ...
-        } else {
-          // User is signed out.
-          //this.router.navigate(['/']);
-          console.log("Logged out");
-          // ...
-        }
-      });
-    }
+  login(credentialFormValue): void {
+    this.auth.emailLogin(credentialFormValue.email, credentialFormValue.password);
   }
+
+  // login() {
+  //   console.log(this.email);
+  //   console.log(this.password);
+  //   if (this.email != undefined && this.password != undefined) {
+  //     this.auth.auth.signInWithEmailAndPassword(this.email, this.password).catch(function(error) {
+  //       // Handle Errors here.
+  //       var errorCode = error.code;
+  //       var errorMessage = error.message;
+  //       console.log(errorMessage);
+  //       // ...
+  //     });
+
+  //     this.auth.auth.onAuthStateChanged(function(user) {
+  //       if (user) {
+  //         // User is signed in.
+  //         //this.router.navigate(['/adminform']);
+  //         console.log("Logged in");
+  //         // ...
+  //       } else {
+  //         // User is signed out.
+  //         //this.router.navigate(['/']);
+  //         console.log("Logged out");
+  //         // ...
+  //       }
+  //     });
+  //   }
+  // }
 }

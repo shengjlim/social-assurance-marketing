@@ -8,7 +8,8 @@ const routes: Routes = [
   { path: 'login', component: LoginPageComponent },
   { path: 'adminform', component: AdminFormPageComponent },
   { path: 'associateform', component: AssociateFormPageComponent },
-  { path: '', redirectTo: '/login', pathMatch: 'full' }
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '*', redirectTo: '/login', pathMatch: 'full' }
 ];
 
 @NgModule({
