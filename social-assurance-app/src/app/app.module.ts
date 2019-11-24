@@ -8,7 +8,7 @@ import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/auth';
 
-import {LoginService} from './services/login-service.service'
+import { LoginService } from './services/login-service.service'
 
 import { MaterialModule } from './material-modules';
 import { BrandTrustFormComponent } from './components/brand-trust-form/brand-trust-form.component';
@@ -25,6 +25,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { CreateAccountPageComponent } from './pages/create-account-page/create-account-page.component';
+import { CreateAccountSuccessDialogComponent } from './components/create-account-success-dialog/create-account-success-dialog.component';
 
 const config = {
   apiKey: "AIzaSyADw9uZw5RSxoULuhRMufGIrXt85VW9SjQ",
@@ -45,7 +46,8 @@ const config = {
     AssociateFormPageComponent,
     PersonalTrustFormComponent,
     InnovationTrustFormComponent,
-    CreateAccountPageComponent
+    CreateAccountPageComponent,
+    CreateAccountSuccessDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -71,6 +73,7 @@ const config = {
     AngularFireAuth,
     LoginService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [CreateAccountSuccessDialogComponent],
 })
 export class AppModule { }
