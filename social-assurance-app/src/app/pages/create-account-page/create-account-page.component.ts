@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { LoginService } from 'src/app/services/login-service.service';
 import { Router } from '@angular/router';
 import { Guid } from "guid-typescript";
 import { User } from '../../models/user';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-create-account-page',
@@ -15,7 +15,7 @@ export class CreateAccountPageComponent implements OnInit {
   public newAccountForm: FormGroup;
   public groupId: string;
 
-  constructor(public auth: LoginService, private router: Router) { }
+  constructor(private firebase: AngularFireAuth, private router: Router) { }
 
   ngOnInit() {
     this.newAccountForm = new FormGroup({
@@ -35,8 +35,7 @@ export class CreateAccountPageComponent implements OnInit {
     else {
       this.groupId = Guid.raw();
       const user = new User(this.newAccountForm.value.email, this.newAccountForm.value.password, this.groupId);
-      console.log(user);
-      // TODO: Add Account to fireBase
+      this.firebase.auth.createUserWithEmailAndPassword(user.email, user.password);
       this.router.navigate(['/login']);
     }
   }
