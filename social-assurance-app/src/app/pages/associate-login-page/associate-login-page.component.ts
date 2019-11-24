@@ -22,6 +22,7 @@ export class AssociateLoginPageComponent implements OnInit {
 
   login(credentialFormValue): void {
     if (credentialFormValue.email === "" || credentialFormValue.groupId === "") {
+      window.alert("Both fields are required.");
       return;
     }
     else {
