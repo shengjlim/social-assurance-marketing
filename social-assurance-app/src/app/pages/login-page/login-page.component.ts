@@ -34,34 +34,6 @@ export class LoginPageComponent implements OnInit {
   }
 
   createAccount(): void {
-    console.log("yooooooo");
+    this.router.navigate(['/createAccount']);
   }
-  // login() {
-  //   console.log(this.email);
-  //   console.log(this.password);
-  //   if (this.email != undefined && this.password != undefined) {
-  //     this.auth.auth.signInWithEmailAndPassword(this.email, this.password).catch(function(error) {
-  //       // Handle Errors here.
-  //       var errorCode = error.code;
-  //       var errorMessage = error.message;
-  //       console.log(errorMessage);
-  //       // ...
-  //     });
-
-
-  //     this.auth.auth.onAuthStateChanged(function(user) {
-  //       if (user) {
-  //         // User is signed in.
-  //         //this.router.navigate(['/adminform']);
-  //         console.log("Logged in");
-  //         // ...
-  //       } else {
-  //         // User is signed out.
-  //         //this.router.navigate(['/']);
-  //         console.log("Logged out");
-  //         // ...
-  //       }
-  //     });
-  //   }
-  // }
 }

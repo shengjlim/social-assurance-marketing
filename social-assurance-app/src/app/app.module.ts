@@ -24,6 +24,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { CreateAccountPageComponent } from './pages/create-account-page/create-account-page.component';
 
 const config = {
   apiKey: "AIzaSyADw9uZw5RSxoULuhRMufGIrXt85VW9SjQ",
@@ -43,7 +44,8 @@ const config = {
     AdminFormPageComponent,
     AssociateFormPageComponent,
     PersonalTrustFormComponent,
-    InnovationTrustFormComponent
+    InnovationTrustFormComponent,
+    CreateAccountPageComponent
   ],
   imports: [
     BrowserModule,
