@@ -5,5 +5,6 @@ export class BrandTrust {
         public conflict: string,
         public callToAction: string,
         public vision: string,
+        public groupId: string
     ) { }
 }

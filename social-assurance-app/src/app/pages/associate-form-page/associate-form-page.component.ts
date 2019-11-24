@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { PersonalTrust } from 'src/app/models/personal-trust';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { LoginService } from '../../services/login-service.service';
 
 @Component({
   selector: 'app-associate-form-page',
@@ -14,7 +16,7 @@ export class AssociateFormPageComponent implements OnInit {
   secondFormGroup: FormGroup;
   thirdFormGroup: FormGroup;
 
-  constructor(private _formBuilder: FormBuilder) { }
+  constructor(private _formBuilder: FormBuilder, private db: AngularFirestore, public auth: LoginService) { }
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
@@ -22,28 +24,31 @@ export class AssociateFormPageComponent implements OnInit {
       incitingIncidents: [''],
       conflict: [''],
       callToAction: [''],
-      vision: [''],
+      vision: ['']
     });
     this.secondFormGroup = this._formBuilder.group({
       relativeTrust: [''],
       userExperience: [''],
       promise: [''],
-      socialProof: [''],
+      socialProof: ['']
     });
     this.thirdFormGroup = this._formBuilder.group({
       connection: [''],
       control: [''],
       consistency: [''],
       commitment: [''],
-      coCreation: [''],
+      coCreation: ['']
     });
   }
 
   onSubmit() {
-    const personalTrust = this.thirdFormGroup.value as PersonalTrust;
-    console.log(personalTrust);
+    let personalTrust = this.thirdFormGroup.value as PersonalTrust;
 
-    // TODO: Add associate personal trust to firebase
+    // Setting the email and groupId of the associate
+    personalTrust.email = this.auth.currentUser.user.email;
+    personalTrust.groupId = '' // TODO: Set the groupId
+
+    this.db.collection('personal').add(personalTrust)
   }
 
 }

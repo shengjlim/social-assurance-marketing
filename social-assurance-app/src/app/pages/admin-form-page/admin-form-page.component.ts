@@ -33,32 +33,36 @@ export class AdminFormPageComponent implements OnInit {
       incitingIncidents: [''],
       conflict: [''],
       callToAction: [''],
-      vision: [''],
+      vision: ['']
     });
     this.secondFormGroup = this._formBuilder.group({
       relativeTrust: [''],
       userExperience: [''],
       promise: [''],
-      socialProof: [''],
+      socialProof: ['']
     });
     this.thirdFormGroup = this._formBuilder.group({
       connection: [''],
       control: [''],
       consistency: [''],
       commitment: [''],
-      coCreation: [''],
+      coCreation: ['']
     });
   }
 
   onSubmit() {
-    const brandTrust = this.firstFormGroup.value as BrandTrust;
-    const innovationTrust = this.secondFormGroup.value as InnovationTrust;
-    const personalTrust = this.thirdFormGroup.value as PersonalTrust;
-    console.log(brandTrust);
-    console.log(innovationTrust);
-    console.log(personalTrust);
+    let brandTrust = this.firstFormGroup.value as BrandTrust;
+    let innovationTrust = this.secondFormGroup.value as InnovationTrust;
+    let personalTrust = this.thirdFormGroup.value as PersonalTrust;  
+    
+    // TODO: Set the groupId
+    brandTrust.groupId = '';
+    innovationTrust.groupId = '';
+    personalTrust.groupId = '';
 
-    //TODO: Add admin brandtrust/innovationtrust/personalTrust to Firebase
+    // Set the personal trust email
+    personalTrust.email = this.auth.currentUser.user.email;
+
     this.db.collection('brand').add(brandTrust);
     this.db.collection('innovation').add(innovationTrust);
     this.db.collection('personal').add(personalTrust);
