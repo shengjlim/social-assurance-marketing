@@ -29,7 +29,7 @@ export class AssociateLoginPageComponent implements OnInit {
       // if (this.auth.authenticated) {
       //   this.router.navigate(['/adminform']);
       // }
-      this.router.navigate(['/associateform', { id: credentialFormValue.groupId }]);
+      this.router.navigate(['/associateform', { id: credentialFormValue.groupId, email: credentialFormValue.email }]);
     }
   }
 
