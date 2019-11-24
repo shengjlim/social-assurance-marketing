@@ -26,6 +26,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { CreateAccountPageComponent } from './pages/create-account-page/create-account-page.component';
 import { CreateAccountSuccessDialogComponent } from './components/create-account-success-dialog/create-account-success-dialog.component';
+import { AssociateLoginPageComponent } from './pages/associate-login-page/associate-login-page.component';
 
 const config = {
   apiKey: "AIzaSyADw9uZw5RSxoULuhRMufGIrXt85VW9SjQ",
@@ -47,7 +48,8 @@ const config = {
     PersonalTrustFormComponent,
     InnovationTrustFormComponent,
     CreateAccountPageComponent,
-    CreateAccountSuccessDialogComponent
+    CreateAccountSuccessDialogComponent,
+    AssociateLoginPageComponent
   ],
   imports: [
     BrowserModule,
