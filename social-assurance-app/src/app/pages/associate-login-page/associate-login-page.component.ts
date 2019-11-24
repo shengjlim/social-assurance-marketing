@@ -15,13 +15,13 @@ export class AssociateLoginPageComponent implements OnInit {
 
   ngOnInit() {
     this.credentialForm = new FormGroup({
+      groupId: new FormControl('', Validators.required),
       email: new FormControl('', Validators.required),
-      groupId: new FormControl('', Validators.required)
     });
   }
 
   login(credentialFormValue): void {
-    if (credentialFormValue.email === "" || credentialFormValue.password === "") {
+    if (credentialFormValue.email === "" || credentialFormValue.groupId === "") {
       return;
     }
     else {
