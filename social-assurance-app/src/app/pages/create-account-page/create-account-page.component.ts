@@ -6,6 +6,7 @@ import { User } from '../../models/user';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateAccountSuccessDialogComponent } from 'src/app/components/create-account-success-dialog/create-account-success-dialog.component';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { Group } from 'src/app/models/group';
 
 @Component({
   selector: 'app-create-account-page',
@@ -24,7 +25,7 @@ export class CreateAccountPageComponent implements OnInit {
       email: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required),
       passwordConfirmation: new FormControl('', Validators.required),
-      groupId: new FormControl('')
+      conferenceName: new FormControl('', Validators.required)
     });
   }
 
@@ -36,15 +37,12 @@ export class CreateAccountPageComponent implements OnInit {
       window.alert("The passwords don't match.")
     }
     else {
-      let admin = false;
-      if (this.groupId === "") {
-        this.groupId = Guid.raw();
-        admin = true;
-      }
-      const user = new User(this.newAccountForm.value.email, this.newAccountForm.value.password, this.groupId, admin);
-      console.log(user);
+      this.groupId = Guid.raw();
       this.openSuccessDialog(this.groupId);
-      this.firebase.auth.createUserWithEmailAndPassword(user.email, user.password);
+      this.firebase.auth.createUserWithEmailAndPassword(this.newAccountForm.value.email, this.newAccountForm.value.password).then(result => {
+        const group = new Group(this.groupId, result.user.uid, this.newAccountForm.value.conferenceName, new Date());
+        // TODO Add group to Firebase
+      });
       this.router.navigate(['/login']);
     }
   }
