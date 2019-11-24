@@ -4,5 +4,6 @@ export class InnovationTrust {
         public userExperience: string,
         public promises: string,
         public socialProof: string,
+        public groupId: string
     ) { }
 }
