@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../../services/login-service.service';
 import { Router } from '@angular/router';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login-page',
@@ -16,16 +16,20 @@ export class LoginPageComponent implements OnInit {
 
   ngOnInit() {
     this.credentialForm = new FormGroup({
-      email: new FormControl(''),
-      password: new FormControl('')
+      email: new FormControl('', Validators.required),
+      password: new FormControl('', Validators.required)
     });
   }
 
-  login(): void {
-    this.auth.emailLogin(this.credentialForm.value.email, this.credentialForm.value.password);
-
-    if (this.auth.authenticated) {
-      this.router.navigate(['/adminform']);
+  login(credentialFormValue): void {
+    if (credentialFormValue.email === "" || credentialFormValue.password === "") {
+      return;
+    }
+    else {
+      this.auth.emailLogin(credentialFormValue.email, credentialFormValue.password);
+      if (this.auth.authenticated) {
+        this.router.navigate(['/adminform']);
+      }
     }
   }
 
