@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
   selector: 'app-create-account-success-dialog',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateAccountSuccessDialogComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialogRef: MatDialogRef<CreateAccountSuccessDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: { id: string }) { }
 
   ngOnInit() {
+    console.log(this.data.id);
   }
 
+  copy(): void {
+    this.dialogRef.close();
+  }
 }

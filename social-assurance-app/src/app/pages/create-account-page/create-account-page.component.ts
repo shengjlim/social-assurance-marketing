@@ -28,31 +28,29 @@ export class CreateAccountPageComponent implements OnInit {
   }
 
   createAccount(): void {
-    // if (this.newAccountForm.value.email === "" || this.newAccountForm.value.password === "" || this.newAccountForm.value.passwordConfirmation === "") {
-    //   window.alert("All fields are required.")
-    // }
-    // else if (this.newAccountForm.value.password !== this.newAccountForm.value.passwordConfirmation) {
-    //   window.alert("The passwords don't match.")
-    // }
-    // else {
-    this.groupId = Guid.raw();
-    const user = new User(this.newAccountForm.value.email, this.newAccountForm.value.password, this.groupId);
-    console.log(user);
-    this.openSuccessDialog();
-    // TODO: Add Account to fireBase
-    //  this.router.navigate(['/login']);
-    // }
+    if (this.newAccountForm.value.email === "" || this.newAccountForm.value.password === "" || this.newAccountForm.value.passwordConfirmation === "") {
+      window.alert("All fields are required.")
+    }
+    else if (this.newAccountForm.value.password !== this.newAccountForm.value.passwordConfirmation) {
+      window.alert("The passwords don't match.")
+    }
+    else {
+      this.groupId = Guid.raw();
+      const user = new User(this.newAccountForm.value.email, this.newAccountForm.value.password, this.groupId);
+      console.log(user);
+      this.openSuccessDialog(this.groupId);
+      this.router.navigate(['/login']);
+    }
   }
 
-  openSuccessDialog(): void {
+  openSuccessDialog(id): void {
     const dialogRef = this.dialog.open(CreateAccountSuccessDialogComponent, {
       width: '250px',
-      // data: {name: this.name, animal: this.animal}
+      data: { id: id }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      // this.animal = result;
     });
   }
 }
