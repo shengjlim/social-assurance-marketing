@@ -21,14 +21,17 @@ export class LoginPageComponent implements OnInit {
     });
   }
 
-  login(credentialFormValue): void {
-    this.auth.emailLogin(credentialFormValue.email, credentialFormValue.password);
+  login(): void {
+    this.auth.emailLogin(this.credentialForm.value.email, this.credentialForm.value.password);
 
-    if(this.auth.authenticated){
+    if (this.auth.authenticated) {
       this.router.navigate(['/adminform']);
     }
   }
 
+  createAccount(): void {
+    console.log("yooooooo");
+  }
   // login() {
   //   console.log(this.email);
   //   console.log(this.password);
