@@ -26,6 +26,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { CreateAccountPageComponent } from './pages/create-account-page/create-account-page.component';
 import { CreateAccountSuccessDialogComponent } from './components/create-account-success-dialog/create-account-success-dialog.component';
+import { AuthGuardService } from './services/auth-guard.service';
 
 const config = {
   apiKey: "AIzaSyADw9uZw5RSxoULuhRMufGIrXt85VW9SjQ",
@@ -71,7 +72,8 @@ const config = {
   ],
   providers: [
     AngularFireAuth,
-    LoginService
+    LoginService,
+    AuthGuardService
   ],
   bootstrap: [AppComponent],
   entryComponents: [CreateAccountSuccessDialogComponent],
