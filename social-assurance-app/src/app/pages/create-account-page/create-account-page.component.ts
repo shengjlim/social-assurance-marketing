@@ -24,6 +24,7 @@ export class CreateAccountPageComponent implements OnInit {
       email: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required),
       passwordConfirmation: new FormControl('', Validators.required),
+      groupId: new FormControl('')
     });
   }
 
@@ -35,8 +36,12 @@ export class CreateAccountPageComponent implements OnInit {
       window.alert("The passwords don't match.")
     }
     else {
-      this.groupId = Guid.raw();
-      const user = new User(this.newAccountForm.value.email, this.newAccountForm.value.password, this.groupId);
+      let admin = false;
+      if (this.groupId === "") {
+        this.groupId = Guid.raw();
+        admin = true;
+      }
+      const user = new User(this.newAccountForm.value.email, this.newAccountForm.value.password, this.groupId, admin);
       console.log(user);
       this.openSuccessDialog(this.groupId);
       this.firebase.auth.createUserWithEmailAndPassword(user.email, user.password);

@@ -3,5 +3,6 @@ export class User {
         public email: string,
         public password: string,
         public groupId: string,
+        public admin: boolean
     ) { }
 }
