@@ -23,6 +23,10 @@ export class LoginPageComponent implements OnInit {
 
   login(credentialFormValue): void {
     this.auth.emailLogin(credentialFormValue.email, credentialFormValue.password);
+
+    if(this.auth.authenticated){
+      this.router.navigate(['/adminform']);
+    }
   }
 
   // login() {
@@ -36,6 +40,7 @@ export class LoginPageComponent implements OnInit {
   //       console.log(errorMessage);
   //       // ...
   //     });
+
 
   //     this.auth.auth.onAuthStateChanged(function(user) {
   //       if (user) {
