@@ -6,6 +6,7 @@ import { AssociateFormPageComponent } from './pages/associate-form-page/associat
 import { CreateAccountPageComponent } from './pages/create-account-page/create-account-page.component';
 import { AssociateLoginPageComponent } from './pages/associate-login-page/associate-login-page.component';
 import { AdminLandingPageComponent } from './pages/admin-landing-page/admin-landing-page.component';
+import { ViewEntriesPageComponent } from './pages/view-entries-page/view-entries-page.component';
 import { AuthGuardService as AuthGuard } from './services/auth-guard.service';
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'associateform', component: AssociateFormPageComponent, canActivate: [AuthGuard] },
   { path: 'createAccount', component: CreateAccountPageComponent, canActivate: [AuthGuard] },
   { path: 'landing', component: AdminLandingPageComponent, canActivate: [AuthGuard] },
+  { path: 'entries', component: ViewEntriesPageComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '**', redirectTo: '/login', pathMatch: 'full' }
 ];

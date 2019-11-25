@@ -29,6 +29,7 @@ import { CreateAccountSuccessDialogComponent } from './components/create-account
 import { AssociateLoginPageComponent } from './pages/associate-login-page/associate-login-page.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { AdminLandingPageComponent } from './pages/admin-landing-page/admin-landing-page.component';
+import { ViewEntriesPageComponent } from './pages/view-entries-page/view-entries-page.component';
 
 const config = {
   apiKey: "AIzaSyADw9uZw5RSxoULuhRMufGIrXt85VW9SjQ",
@@ -52,7 +53,8 @@ const config = {
     CreateAccountPageComponent,
     CreateAccountSuccessDialogComponent,
     AssociateLoginPageComponent,
-    AdminLandingPageComponent
+    AdminLandingPageComponent,
+    ViewEntriesPageComponent
   ],
   imports: [
     BrowserModule,

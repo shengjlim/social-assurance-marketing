@@ -49,8 +49,8 @@ export class AssociateFormPageComponent implements OnInit {
     let personalTrust = this.thirdFormGroup.value as PersonalTrust;
 
     // Setting the email and groupId of the associate
-    personalTrust.email = this.auth.currentUser.user.email;
-    personalTrust.groupId = '' // TODO: Set the groupId
+    personalTrust.email = this.email;
+    personalTrust.groupId = this.id;
 
     this.db.collection('personal').add(personalTrust)
   }
@@ -59,8 +59,6 @@ export class AssociateFormPageComponent implements OnInit {
     let parameters = string.split(";");
     this.id = parameters[1].slice(3);
     this.email = parameters[2].slice(6);
-    console.log(this.id);
-    console.log(this.email);
   }
 
 }
