@@ -26,10 +26,7 @@ export class AssociateLoginPageComponent implements OnInit {
       return;
     }
     else {
-      // this.auth.emailLogin(credentialFormValue.email, credentialFormValue.password);
-      // if (this.auth.authenticated) {
-      //   this.router.navigate(['/adminform']);
-      // }
+      // TODO: Authenticate existence of group ID
       this.router.navigate(['/associateform', { id: credentialFormValue.groupId, email: credentialFormValue.email }]);
     }
   }

@@ -28,12 +28,17 @@ export class LoginPageComponent implements OnInit {
     else {
       this.auth.emailLogin(credentialFormValue.email, credentialFormValue.password);
       if (this.auth.authenticated) {
-        this.router.navigate(['/adminform']);
+        let groupId = this.getGroupIdFromUserId;
+        this.router.navigate(['/adminform', { id: groupId, email: credentialFormValue.email }]);
       }
     }
   }
 
   createAccount(): void {
     this.router.navigate(['/createAccount']);
+  }
+
+  getGroupIdFromUserId() {
+    // TODO:
   }
 }
