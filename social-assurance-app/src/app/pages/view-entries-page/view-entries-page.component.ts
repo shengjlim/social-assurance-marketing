@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { BrandTrust } from 'src/app/models/brand-trust';
 import { InnovationTrust } from 'src/app/models/innovation-trust';
 import { PersonalTrust } from 'src/app/models/personal-trust';
@@ -13,7 +11,7 @@ import { PersonalTrust } from 'src/app/models/personal-trust';
 })
 export class ViewEntriesPageComponent implements OnInit {
 
-    constructor(private fireauth: AngularFireAuth, private db: AngularFirestore, private _formBuilder: FormBuilder) { }
+    constructor(private db: AngularFirestore) { }
 
     ngOnInit() {
         let groupId = "other";
