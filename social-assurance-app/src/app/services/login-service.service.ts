@@ -7,6 +7,7 @@ import { Router } from "@angular/router";
 export class LoginService {
 
   authState: any = null;
+  groupId: any = null;
 
   constructor(private afAuth: AngularFireAuth,
               private router:Router) {
@@ -24,6 +25,18 @@ export class LoginService {
   // Returns current user data
   get currentUser(): any {
     return this.authenticated ? this.authState : null;
+  }
+
+  setGroupId(id){
+    this.groupId = id;
+  }
+
+  getGroupId(){
+    return this.groupId;
+  }
+
+  get currentUserEmail(): any {
+    return this.afAuth.auth.currentUser.email;
   }
 
   // Returns
