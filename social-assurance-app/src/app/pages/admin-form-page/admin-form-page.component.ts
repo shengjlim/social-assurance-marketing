@@ -7,6 +7,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { FirebaseAuth } from '@angular/fire';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { LoginService } from '../../services/login-service.service';
 
 @Component({
   selector: 'app-admin-form-page',
@@ -20,12 +21,10 @@ export class AdminFormPageComponent implements OnInit {
   secondFormGroup: FormGroup;
   thirdFormGroup: FormGroup;
 
-  constructor(private _formBuilder: FormBuilder, private db: AngularFirestore, router: Router, auth: AngularFireAuth) {
-    auth.user.subscribe(user => {
-      if(user === null){
-        router.navigate(['']);
-      }
-    });
+  constructor(private _formBuilder: FormBuilder, private db: AngularFirestore, router: Router, public auth: LoginService) {
+    if(!auth.authenticated){
+      router.navigate(['/']);
+    }
   }
 
   ngOnInit() {
@@ -34,32 +33,36 @@ export class AdminFormPageComponent implements OnInit {
       incitingIncidents: [''],
       conflict: [''],
       callToAction: [''],
-      vision: [''],
+      vision: ['']
     });
     this.secondFormGroup = this._formBuilder.group({
       relativeTrust: [''],
       userExperience: [''],
       promise: [''],
-      socialProof: [''],
+      socialProof: ['']
     });
     this.thirdFormGroup = this._formBuilder.group({
       connection: [''],
       control: [''],
       consistency: [''],
       commitment: [''],
-      coCreation: [''],
+      coCreation: ['']
     });
   }
 
   onSubmit() {
-    const brandTrust = this.firstFormGroup.value as BrandTrust;
-    const innovationTrust = this.secondFormGroup.value as InnovationTrust;
-    const personalTrust = this.thirdFormGroup.value as PersonalTrust;
-    console.log(brandTrust);
-    console.log(innovationTrust);
-    console.log(personalTrust);
+    let brandTrust = this.firstFormGroup.value as BrandTrust;
+    let innovationTrust = this.secondFormGroup.value as InnovationTrust;
+    let personalTrust = this.thirdFormGroup.value as PersonalTrust;  
+    
+    // TODO: Set the groupId
+    brandTrust.groupId = '';
+    innovationTrust.groupId = '';
+    personalTrust.groupId = '';
 
-    //TODO: Add admin brandtrust/innovationtrust/personalTrust to Firebase
+    // Set the personal trust email
+    personalTrust.email = this.auth.currentUser.user.email;
+
     this.db.collection('brand').add(brandTrust);
     this.db.collection('innovation').add(innovationTrust);
     this.db.collection('personal').add(personalTrust);

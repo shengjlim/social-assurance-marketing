@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../../services/login-service.service';
 import { Router } from '@angular/router';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login-page',
@@ -16,40 +16,29 @@ export class LoginPageComponent implements OnInit {
 
   ngOnInit() {
     this.credentialForm = new FormGroup({
-      email: new FormControl(''),
-      password: new FormControl('')
+      email: new FormControl('', Validators.required),
+      password: new FormControl('', Validators.required)
     });
   }
 
   login(credentialFormValue): void {
-    this.auth.emailLogin(credentialFormValue.email, credentialFormValue.password);
+    if (credentialFormValue.email === "" || credentialFormValue.password === "") {
+      return;
+    }
+    else {
+      this.auth.emailLogin(credentialFormValue.email, credentialFormValue.password);
+      if (this.auth.authenticated) {
+        let groupId = this.getGroupIdFromUserId();
+        this.router.navigate(['/landing', { id: groupId, email: credentialFormValue.email }]);
+      }
+    }
   }
 
-  // login() {
-  //   console.log(this.email);
-  //   console.log(this.password);
-  //   if (this.email != undefined && this.password != undefined) {
-  //     this.auth.auth.signInWithEmailAndPassword(this.email, this.password).catch(function(error) {
-  //       // Handle Errors here.
-  //       var errorCode = error.code;
-  //       var errorMessage = error.message;
-  //       console.log(errorMessage);
-  //       // ...
-  //     });
+  createAccount(): void {
+    this.router.navigate(['/createAccount']);
+  }
 
-  //     this.auth.auth.onAuthStateChanged(function(user) {
-  //       if (user) {
-  //         // User is signed in.
-  //         //this.router.navigate(['/adminform']);
-  //         console.log("Logged in");
-  //         // ...
-  //       } else {
-  //         // User is signed out.
-  //         //this.router.navigate(['/']);
-  //         console.log("Logged out");
-  //         // ...
-  //       }
-  //     });
-  //   }
-  // }
+  getGroupIdFromUserId() {
+    // TODO:
+  }
 }

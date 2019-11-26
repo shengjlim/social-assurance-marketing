@@ -8,7 +8,7 @@ import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/auth';
 
-import {LoginService} from './services/login-service.service'
+import { LoginService } from './services/login-service.service'
 
 import { MaterialModule } from './material-modules';
 import { BrandTrustFormComponent } from './components/brand-trust-form/brand-trust-form.component';
@@ -24,6 +24,12 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { CreateAccountPageComponent } from './pages/create-account-page/create-account-page.component';
+import { CreateAccountSuccessDialogComponent } from './components/create-account-success-dialog/create-account-success-dialog.component';
+import { AssociateLoginPageComponent } from './pages/associate-login-page/associate-login-page.component';
+import { AuthGuardService } from './services/auth-guard.service';
+import { AdminLandingPageComponent } from './pages/admin-landing-page/admin-landing-page.component';
+import { ViewEntriesPageComponent } from './pages/view-entries-page/view-entries-page.component';
 
 const config = {
   apiKey: "AIzaSyADw9uZw5RSxoULuhRMufGIrXt85VW9SjQ",
@@ -43,7 +49,12 @@ const config = {
     AdminFormPageComponent,
     AssociateFormPageComponent,
     PersonalTrustFormComponent,
-    InnovationTrustFormComponent
+    InnovationTrustFormComponent,
+    CreateAccountPageComponent,
+    CreateAccountSuccessDialogComponent,
+    AssociateLoginPageComponent,
+    AdminLandingPageComponent,
+    ViewEntriesPageComponent
   ],
   imports: [
     BrowserModule,
@@ -67,8 +78,10 @@ const config = {
   ],
   providers: [
     AngularFireAuth,
-    LoginService
+    LoginService,
+    AuthGuardService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [CreateAccountSuccessDialogComponent],
 })
 export class AppModule { }
