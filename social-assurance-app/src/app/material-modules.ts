@@ -5,6 +5,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatDialogModule } from '@angular/material/dialog';
+import {MatListModule} from '@angular/material/list';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { MatDialogModule } from '@angular/material/dialog';
         MatButtonModule,
         MatStepperModule,
         MatDialogModule,
+        MatListModule
     ]
 })
 export class MaterialModule { }

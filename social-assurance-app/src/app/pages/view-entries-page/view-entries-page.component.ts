@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PersonalTrust } from '../../models/personal-trust';
 
 @Component({
   selector: 'app-view-entries-page',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewEntriesPageComponent implements OnInit {
 
+  entries: Array<PersonalTrust>;
+
   constructor() { }
 
   ngOnInit() {
+    this.entries = [new PersonalTrust("Connection", "Control", "consistency", "commitmetn", "cocreation","email@email.email",""),
+    new PersonalTrust("Connection", "Control", "consistency", "commitmetn", "cocreation","person@email.email","")];
   }
 
 }

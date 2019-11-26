@@ -1,1 +1,30 @@
-<p>view-entries-page works!</p>
+<div id="entry-list">
+    <h1>Personal Trust Responses</h1>
+    <mat-card class="entry" *ngFor="let entry of entries">
+        <mat-card-title>{{entry.email}}</mat-card-title>
+        <mat-card-content>
+            <mat-list>
+                <mat-list-item>
+                    <h3 mat-line>Connection</h3>
+                    <p mat-line>{{entry.connection}}</p>
+                </mat-list-item>
+                <mat-list-item>
+                    <h3 mat-line>Control</h3>
+                    <p mat-line>{{entry.control}}</p>
+                </mat-list-item>
+                <mat-list-item>
+                    <h3 mat-line>Consistency</h3>
+                    <p mat-line>{{entry.consistency}}</p>
+                </mat-list-item>
+                <mat-list-item>
+                    <h3 mat-line>Commitment</h3>
+                    <p mat-line>{{entry.commitment}}</p>
+                </mat-list-item>
+                <mat-list-item>
+                    <h3 mat-line>CoCreation</h3>
+                    <p mat-line>{{entry.coCreation}}</p>
+                </mat-list-item>
+            </mat-list>
+        </mat-card-content>
+    </mat-card>
+</div>
