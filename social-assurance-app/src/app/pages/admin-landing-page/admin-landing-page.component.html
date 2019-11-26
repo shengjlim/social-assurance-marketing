@@ -1,2 +1,11 @@
-<button mat-raised-button color="accent" (click)="adminForm()">Create or Edit</button>
-<button mat-raised-button color="accent" (click)="viewEntries()">View</button>
+<mat-card id="card">
+    <mat-card-title id="title">Currency of Trust = (Personal Trust + Brand Trust) Innovation Trust</mat-card-title>
+    <mat-card-content id="content">
+        <p>As an admin, you can fill out your company's innovation and brand trust by clicking <strong>Create or Edit</strong>.</p>
+        <p>You can also view all of the entries for personal trust by clicking <strong>View</strong>.</p>
+    </mat-card-content>
+    <mat-card-actions id="actions" align="end">
+        <button mat-raised-button color="primary" (click)="adminForm()">Create or Edit</button>
+        <button mat-raised-button color="primary" (click)="viewEntries()">View</button>
+    </mat-card-actions>
+</mat-card>
