@@ -8,6 +8,7 @@ import { FirebaseAuth } from '@angular/fire';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { LoginService } from '../../services/login-service.service';
+import { FormInfoService } from 'src/app/services/form-info.service';
 
 @Component({
   selector: 'app-admin-form-page',
@@ -21,9 +22,9 @@ export class AdminFormPageComponent implements OnInit {
   secondFormGroup: FormGroup;
   thirdFormGroup: FormGroup;
 
-  constructor(private _formBuilder: FormBuilder, private db: AngularFirestore, router: Router, public auth: LoginService) {
+  constructor(private _formBuilder: FormBuilder, private router: Router, public auth: LoginService, private fi : FormInfoService) {
     if(!auth.authenticated){
-      router.navigate(['/']);
+      this.router.navigate(['/']);
     }
   }
 
@@ -63,8 +64,12 @@ export class AdminFormPageComponent implements OnInit {
     // Set the personal trust email
     personalTrust.email = this.auth.currentUser.user.email;
 
-    this.db.collection('brand').add(brandTrust);
-    this.db.collection('innovation').add(innovationTrust);
-    this.db.collection('personal').add(personalTrust);
+    this.fi.putBrandTrustObject(brandTrust);
+    this.fi.putInnovationTrustObject(innovationTrust);
+    this.fi.putPersonalTrustObject(personalTrust);
+
+    // TODO: Popup and email
+    
+    this.router.navigate(['landing']);
   }
 }

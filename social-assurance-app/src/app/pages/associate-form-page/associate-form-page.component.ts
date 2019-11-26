@@ -4,6 +4,8 @@ import { PersonalTrust } from 'src/app/models/personal-trust';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { LoginService } from '../../services/login-service.service';
 import { Router } from '@angular/router';
+import { TrustService } from 'src/app/services/trust.service';
+import { FormInfoService } from 'src/app/services/form-info.service';
 
 @Component({
   selector: 'app-associate-form-page',
@@ -19,12 +21,12 @@ export class AssociateFormPageComponent implements OnInit {
   id: string;
   email: string;
 
-  constructor(private _formBuilder: FormBuilder, private db: AngularFirestore, public auth: LoginService, private router: Router) { }
+  constructor(private _formBuilder: FormBuilder, public auth: LoginService, private router: Router, private ts : TrustService, private fi: FormInfoService) { }
 
   ngOnInit() {
     this.email = this.auth.getAssociateEmail();
     this.id = this.auth.getGroupId(); //this.auth.getGroupId();
-    console.log(this.email, this.id);
+
     if(this.id === null || this.email === null){
       this.router.navigate(['associateLogin']);
     }
@@ -51,7 +53,7 @@ export class AssociateFormPageComponent implements OnInit {
     });
 
     // Set the brand values for this groupId
-    this.db.collection('brand', ref=> ref.where("groupId", "==", this.id)).get().subscribe((data) => {
+    this.ts.getBrandTrust(this.id).get().subscribe((data) => {
       this.firstFormGroup.setValue({
         associations: data.docs[0].data().associations,
         incitingIncidents: data.docs[0].data().incitingIncidents,
@@ -62,7 +64,7 @@ export class AssociateFormPageComponent implements OnInit {
     });
 
     // Set the innovation values for this groupId
-    this.db.collection('innovation', ref=> ref.where("groupId", "==", this.id)).get().subscribe((data) => {
+    this.ts.getInnovationTrust(this.id).get().subscribe((data) => {
       this.secondFormGroup.setValue({
         promise: data.docs[0].data().promise,
         relativeTrust: data.docs[0].data().relativeTrust,
@@ -79,7 +81,7 @@ export class AssociateFormPageComponent implements OnInit {
     personalTrust.email = this.email;
     personalTrust.groupId = this.id;
 
-    this.db.collection('personal').add(personalTrust);
+    this.fi.putPersonalTrustObject(personalTrust);
 
     // TODO: Show popup that indicates success before going back to login page
     // TODO: Also send email with their results
