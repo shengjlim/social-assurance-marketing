@@ -22,7 +22,13 @@ export class AssociateFormPageComponent implements OnInit {
   constructor(private _formBuilder: FormBuilder, private db: AngularFirestore, public auth: LoginService, private router: Router) { }
 
   ngOnInit() {
-    this.getEmailAndGroupId(this.router.url);
+    this.email = this.auth.getAssociateEmail();
+    this.id = this.auth.getGroupId(); //this.auth.getGroupId();
+    console.log(this.email, this.id);
+    if(this.id === null || this.email === null){
+      this.router.navigate(['associateLogin']);
+    }
+    
     this.firstFormGroup = this._formBuilder.group({
       associations: [''],
       incitingIncidents: [''],
@@ -43,6 +49,27 @@ export class AssociateFormPageComponent implements OnInit {
       commitment: [''],
       coCreation: ['']
     });
+
+    // Set the brand values for this groupId
+    this.db.collection('brand', ref=> ref.where("groupId", "==", this.id)).get().subscribe((data) => {
+      this.firstFormGroup.setValue({
+        associations: data.docs[0].data().associations,
+        incitingIncidents: data.docs[0].data().incitingIncidents,
+        conflict: data.docs[0].data().conflict,
+        callToAction: data.docs[0].data().callToAction,
+        vision: data.docs[0].data().vision
+      });
+    });
+
+    // Set the innovation values for this groupId
+    this.db.collection('innovation', ref=> ref.where("groupId", "==", this.id)).get().subscribe((data) => {
+      this.secondFormGroup.setValue({
+        promise: data.docs[0].data().promise,
+        relativeTrust: data.docs[0].data().relativeTrust,
+        socialProof: data.docs[0].data().socialProof,
+        userExperience: data.docs[0].data().userExperience
+      });
+    });
   }
 
   onSubmit() {
@@ -52,13 +79,11 @@ export class AssociateFormPageComponent implements OnInit {
     personalTrust.email = this.email;
     personalTrust.groupId = this.id;
 
-    this.db.collection('personal').add(personalTrust)
-  }
+    this.db.collection('personal').add(personalTrust);
 
-  getEmailAndGroupId(string) {
-    let parameters = string.split(";");
-    this.id = parameters[1].slice(3);
-    this.email = parameters[2].slice(6);
-  }
+    // TODO: Show popup that indicates success before going back to login page
+    // TODO: Also send email with their results
 
+    this.router.navigate(['asssociateLogin'])
+  }
 }

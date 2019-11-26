@@ -8,6 +8,7 @@ export class LoginService {
 
   authState: any = null;
   groupId: any = null;
+  associateEmail: any = null;
 
   constructor(private afAuth: AngularFireAuth,
               private router:Router) {
@@ -33,6 +34,14 @@ export class LoginService {
 
   getGroupId(){
     return this.groupId;
+  }
+
+  setAssociateEmail(email){
+    this.associateEmail = email;
+  }
+
+  getAssociateEmail(){
+    return this.associateEmail;
   }
 
   get currentUserEmail(): any {
