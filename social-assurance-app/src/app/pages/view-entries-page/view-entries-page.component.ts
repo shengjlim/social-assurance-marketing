@@ -20,7 +20,7 @@ export class ViewEntriesPageComponent implements OnInit {
   constructor(private ts : TrustService, private auth: LoginService) { }
 
   ngOnInit() {
-    let groupId = this.auth.currentUserEmail();
+    let groupId = this.auth.getGroupId();
     this.ts.getPersonalTrust(groupId).get().subscribe(data => {
       let personalAnswersList = [];
       for(let i = 0; i < data.docs.length; i++) {
