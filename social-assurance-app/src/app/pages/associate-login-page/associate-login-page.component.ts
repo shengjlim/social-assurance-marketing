@@ -26,8 +26,10 @@ export class AssociateLoginPageComponent implements OnInit {
       return;
     }
     else {
+      this.auth.setGroupId(credentialFormValue.groupId);
+      this.auth.setAssociateEmail(credentialFormValue.email)
       // TODO: Authenticate existence of group ID
-      this.router.navigate(['/associateform', { id: credentialFormValue.groupId, email: credentialFormValue.email }]);
+      this.router.navigate(['/associateform']);
     }
   }
 
