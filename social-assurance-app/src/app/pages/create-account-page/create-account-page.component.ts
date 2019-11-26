@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { CreateAccountSuccessDialogComponent } from 'src/app/components/create-account-success-dialog/create-account-success-dialog.component';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Group } from 'src/app/models/group';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-create-account-page',
@@ -18,7 +19,7 @@ export class CreateAccountPageComponent implements OnInit {
   public newAccountForm: FormGroup;
   public groupId: string;
 
-  constructor(private firebase: AngularFireAuth, private router: Router, public dialog: MatDialog) { }
+  constructor(private firebase: AngularFireAuth, private router: Router, public dialog: MatDialog, private db: AngularFirestore) { }
 
   ngOnInit() {
     this.newAccountForm = new FormGroup({
@@ -41,7 +42,7 @@ export class CreateAccountPageComponent implements OnInit {
       this.openSuccessDialog(this.groupId);
       this.firebase.auth.createUserWithEmailAndPassword(this.newAccountForm.value.email, this.newAccountForm.value.password).then(result => {
         const group = new Group(this.groupId, result.user.uid, this.newAccountForm.value.conferenceName, new Date());
-        // TODO Add group to Firebase
+        this.db.collection('group').add(group);
       });
       this.router.navigate(['/login']);
     }
