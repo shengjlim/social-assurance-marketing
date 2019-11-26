@@ -1,4 +1,5 @@
 <h1>Personal Trust Responses</h1>
+<button mat-raised-button color="primary" type="button" (click)="downloadToCSV()">Download Responses</button>
 <div id="entry-list">
     <div class="brand-and-innovation">
         <mat-card class="entry">
@@ -15,7 +16,7 @@
                     </mat-list-item>
                     <mat-list-item>
                         <h3 mat-line>Conflict</h3>
-                        <p mat-line>{{brandTrust.conflicts}}</p>
+                        <p mat-line>{{brandTrust.conflict}}</p>
                     </mat-list-item>
                     <mat-list-item>
                         <h3 mat-line>Call to Action</h3>
@@ -41,8 +42,8 @@
                         <p mat-line>{{innovationTrust.userExperience}}</p>
                     </mat-list-item>
                     <mat-list-item>
-                        <h3 mat-line>Promises</h3>
-                        <p mat-line>{{innovationTrust.promises}}</p>
+                        <h3 mat-line>The Promise</h3>
+                        <p mat-line>{{innovationTrust.promise}}</p>
                     </mat-list-item>
                     <mat-list-item>
                         <h3 mat-line>Social Proof</h3>
