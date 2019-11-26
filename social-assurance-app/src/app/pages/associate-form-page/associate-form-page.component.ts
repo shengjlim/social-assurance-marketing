@@ -22,7 +22,7 @@ export class AssociateFormPageComponent implements OnInit {
   constructor(private _formBuilder: FormBuilder, private db: AngularFirestore, public auth: LoginService, private router: Router) { }
 
   ngOnInit() {
-    this.getEmailAndGroupId(this.router.url);
+    //this.getEmailAndGroupId(this.router.url);
     this.firstFormGroup = this._formBuilder.group({
       associations: [''],
       incitingIncidents: [''],
@@ -42,6 +42,27 @@ export class AssociateFormPageComponent implements OnInit {
       consistency: [''],
       commitment: [''],
       coCreation: ['']
+    });
+
+    // Set the brand values for this groupId
+    this.db.collection('brand', ref=> ref.where("groupId", "==", "other")).get().subscribe((data) => {
+      this.firstFormGroup.setValue({
+        associations: data.docs[0].data().associations,
+        incitingIncidents: data.docs[0].data().incitingIncidents,
+        conflict: data.docs[0].data().conflict,
+        callToAction: data.docs[0].data().callToAction,
+        vision: data.docs[0].data().vision
+      });
+    });
+
+    // Set the innovation values for this groupId
+    this.db.collection('innovation', ref=> ref.where("groupId", "==", "other")).get().subscribe((data) => {
+      this.secondFormGroup.setValue({
+        promise: data.docs[0].data().promise,
+        relativeTrust: data.docs[0].data().relativeTrust,
+        socialProof: data.docs[0].data().socialProof,
+        userExperience: data.docs[0].data().userExperience
+      });
     });
   }
 
