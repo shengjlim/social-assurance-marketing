@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginService } from '../../services/login-service.service';
 
 @Component({
   selector: 'app-admin-landing-page',
@@ -8,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class AdminLandingPageComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private auth: LoginService) { }
 
   id: string;
   email: string;
@@ -26,10 +27,7 @@ export class AdminLandingPageComponent implements OnInit {
   }
 
   getEmailAndGroupId(string) {
-    let parameters = string.split(";");
-    this.id = parameters[1].slice(3);
-    this.email = parameters[2].slice(6);
-    console.log(this.id);
-    console.log(this.email);
+    this.email = this.auth.currentUserEmail;
+    this.id = this.auth.getGroupId();
   }
 }
