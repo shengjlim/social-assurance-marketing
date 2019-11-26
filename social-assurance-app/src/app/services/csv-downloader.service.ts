@@ -20,7 +20,7 @@ export class CsvDownloaderService {
         const innovationWorksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet([innovationTrust]);
         const personalWorksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(personalTrust);
 
-        // changing header names for Brand worksheet
+        // changing header names for the Brand worksheet
         brandWorksheet.A1.v = "Group ID";
         brandWorksheet.B1.v = 'Associations';
         brandWorksheet.C1.v = 'Inciting Incidents';
@@ -28,14 +28,14 @@ export class CsvDownloaderService {
         brandWorksheet.E1.v = 'Call to Action';
         brandWorksheet.F1.v = 'Vision';
 
-        // changing header names for Personal worksheet
+        // changing header names for the Innovation worksheet
         innovationWorksheet.A1.v = "Group ID";
         innovationWorksheet.B1.v = 'Relative Trust';
         innovationWorksheet.C1.v = 'User Experience';
         innovationWorksheet.D1.v = 'The Promise';
         innovationWorksheet.E1.v = 'Social Proof';
 
-        // changing header names for Personal worksheet
+        // changing header names for the Personal worksheet
         personalWorksheet.A1.v = "Group ID";
         personalWorksheet.B1.v = 'Email';
         personalWorksheet.C1.v = 'Connection';
@@ -44,7 +44,7 @@ export class CsvDownloaderService {
         personalWorksheet.F1.v = 'Commitment';
         personalWorksheet.G1.v = 'Co-Creation';
 
-        // creating the workbook and attaching the worksheet
+        // creating the workbook and attaching the worksheets
         const workbook: XLSX.WorkBook = { 
             Sheets: { 
                 'Brand': brandWorksheet, 

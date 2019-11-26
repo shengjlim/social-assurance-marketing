@@ -2,6 +2,11 @@
     height: 100%;
 }
 
+#button-container{
+    display: flex;
+    justify-content: center;
+}
+
 #entry-list {
     display: flex;
     flex-direction: row;
