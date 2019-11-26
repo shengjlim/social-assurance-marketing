@@ -1,13 +1,44 @@
-#entries {
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 9%;
-    width: 80%;
+:host {
+    height: 100%;
+}
+
+#entry-list {
+    display: flex;
+    flex-direction: row;
+    margin-top: 2%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 5%;
+    height: 80%;
+}
+
+.mat-card-title {
+    margin-bottom: 0;
 }
 
 .entry {
     margin-right: auto;
     margin-left: auto;
     margin-bottom: 2%;
-    width: 70%;
+    width: 90%;
+}
+
+.personal {
+    overflow-y: scroll;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.brand-and-innovation {
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    width: 40%;
+}
+
+h1 {
+    margin-left: 5%;
+    margin-top: 5%;
 }
