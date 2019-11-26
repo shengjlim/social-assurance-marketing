@@ -26,7 +26,7 @@ exports.sendMail = functions.https.onRequest((req: any, res: any) => {
         const dest = req.query.dest;
 
         const mailOptions = {
-            from: 'Your Account Name <yourgmailaccount@gmail.com>', // Something like: Jane Doe <janedoe@gmail.com>
+            from: 'Social Assurance <social.assurance.m.test@gmail.com>', // Something like: Jane Doe <janedoe@gmail.com>
             to: dest,
             subject: 'I\'M A PICKLE!!!', // email subject
             html: `<p style="font-size: 16px;">Pickle Riiiiiiiiiiiiiiiick!!</p>
