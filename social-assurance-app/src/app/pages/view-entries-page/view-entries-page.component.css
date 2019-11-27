@@ -1,10 +1,19 @@
 :host {
     height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
-#button-container{
+#button-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+button {
+    flex-grow: 0;
+    margin-right: 5%;
+    align-self: center;
 }
 
 #entry-list {
@@ -45,5 +54,4 @@
 
 h1 {
     margin-left: 5%;
-    margin-top: 5%;
 }
