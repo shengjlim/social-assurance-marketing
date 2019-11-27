@@ -60,10 +60,14 @@ export class LoginService {
 
   emailLogin(email:string, password:string) {
     return this.afAuth.auth.signInWithEmailAndPassword(email, password)
-      .then((user) => {
+      .then(user => {
         this.authState = user;
+        this.setGroupId("TODO");
+        this.router.navigate(['/landing']);
       })
-      .catch(error => console.log(error));
+      .catch(error => {
+        alert(error.message);
+      });
  }
 
   signOut(): void {

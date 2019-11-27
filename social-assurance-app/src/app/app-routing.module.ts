@@ -11,7 +11,7 @@ import { AuthGuardService as AuthGuard } from './services/auth-guard.service';
 
 const routes: Routes = [
   { path: 'login', component: LoginPageComponent },
-  { path: 'associateLogin', component: AssociateLoginPageComponent },
+  { path: 'associatelogin', component: AssociateLoginPageComponent },
   { path: 'adminform', component: AdminFormPageComponent, canActivate: [AuthGuard] },
   { path: 'associateform', component: AssociateFormPageComponent },
   { path: 'createAccount', component: CreateAccountPageComponent },

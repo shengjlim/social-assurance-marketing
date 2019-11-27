@@ -21,16 +21,13 @@ export class LoginPageComponent implements OnInit {
     });
   }
 
-  login(credentialFormValue): void {
+  login(): void {
+    let credentialFormValue = this.credentialForm.value;
     if (credentialFormValue.email === "" || credentialFormValue.password === "") {
       return;
     }
     else {
       this.auth.emailLogin(credentialFormValue.email, credentialFormValue.password);
-      if (this.auth.authenticated) {
-        this.auth.setGroupId("TODO");
-        this.router.navigate(['/landing']);
-      }
     }
   }
 
