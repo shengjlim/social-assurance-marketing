@@ -40,12 +40,20 @@ export class LoginService {
     });
   }
 
+  setAssociateGroupId(groupId){
+    this.groupId = groupId;
+  }
+
   setAssociateEmail(email){
     this.associateEmail = email;
   }
 
   getAssociateEmail(){
     return this.associateEmail;
+  }
+
+  getGroupObject(groupid){
+    return this.db.collection("group", ref => ref.where("id", "==", groupid));
   }
 
   get currentUserEmail(): any {

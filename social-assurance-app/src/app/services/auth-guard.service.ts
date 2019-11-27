@@ -8,7 +8,7 @@ export class AuthGuardService {
   constructor(public auth: LoginService, public router: Router) { }
 
   canActivate(): boolean {
-    if(!this.auth.authenticated) {
+    if(!this.auth.groupId) {
       this.router.navigate(['login']);
       return false;
     }

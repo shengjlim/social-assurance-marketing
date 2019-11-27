@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'login', component: LoginPageComponent },
   { path: 'associatelogin', component: AssociateLoginPageComponent },
   { path: 'adminform', component: AdminFormPageComponent, canActivate: [AuthGuard] },
-  { path: 'associateform', component: AssociateFormPageComponent },
+  { path: 'associateform', component: AssociateFormPageComponent, canActivate: [AuthGuard]},
   { path: 'createAccount', component: CreateAccountPageComponent },
   { path: 'landing', component: AdminLandingPageComponent, canActivate: [AuthGuard] },
   { path: 'entries', component: ViewEntriesPageComponent, canActivate: [AuthGuard] },

@@ -20,16 +20,21 @@ export class AssociateLoginPageComponent implements OnInit {
     });
   }
 
-  login(credentialFormValue): void {
+  login(): void {
+    let credentialFormValue = this.credentialForm.value;
     if (credentialFormValue.email === "" || credentialFormValue.groupId === "") {
-      window.alert("Both fields are required.");
-      return;
+      alert("Both fields are required.");
     }
     else {
-      this.auth.setGroupId(credentialFormValue.groupId);
-      this.auth.setAssociateEmail(credentialFormValue.email)
-      // TODO: Authenticate existence of group ID
-      this.router.navigate(['/associateform']);
+      this.auth.getGroupObject(credentialFormValue.groupId).get().subscribe(data => {
+        if(data.docs.length > 0) {
+          this.auth.setAssociateGroupId(credentialFormValue.groupId);
+          this.auth.setAssociateEmail(credentialFormValue.email)
+          this.router.navigate(['/associateform']);
+        }else{
+          alert("Invalid group id.")
+        }
+      })
     }
   }
 
