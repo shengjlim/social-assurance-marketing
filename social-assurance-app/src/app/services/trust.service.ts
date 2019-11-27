@@ -1,10 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 
-import { BrandTrust } from 'src/app/models/brand-trust';
-import { InnovationTrust } from 'src/app/models/innovation-trust';
-import { PersonalTrust } from 'src/app/models/personal-trust';
-
 @Injectable({
   providedIn: 'root'
 })

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from "@angular/router";
+import { AngularFirestore } from '@angular/fire/firestore';
 
 // from angularfirebase.com tutorial
 @Injectable()
@@ -11,7 +12,8 @@ export class LoginService {
   associateEmail: any = null;
 
   constructor(private afAuth: AngularFireAuth,
-              private router:Router) {
+              private router:Router,
+              private db: AngularFirestore) {
 
             this.afAuth.authState.subscribe((auth) => {
               this.authState = auth
@@ -28,12 +30,14 @@ export class LoginService {
     return this.authenticated ? this.authState : null;
   }
 
-  setGroupId(id){
-    this.groupId = id;
-  }
-
   getGroupId(){
     return this.groupId;
+  }
+
+  setGroupId(uid){
+    this.db.collection("group", ref => ref.where("manager_id", "==", uid)).get().subscribe(data => {
+      this.groupId = data.docs[0].data().id;
+    });
   }
 
   setAssociateEmail(email){
@@ -62,7 +66,7 @@ export class LoginService {
     return this.afAuth.auth.signInWithEmailAndPassword(email, password)
       .then(user => {
         this.authState = user;
-        this.setGroupId("TODO");
+        this.setGroupId(user.user.uid);
         this.router.navigate(['/landing']);
       })
       .catch(error => {
