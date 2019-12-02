@@ -35,9 +35,13 @@ export class LoginService {
   }
 
   setGroupId(uid){
-    this.db.collection("group", ref => ref.where("manager_id", "==", uid)).get().subscribe(data => {
+    this.db.collection("group", ref => ref.where("managerId", "==", uid)).get().subscribe(data => {
       this.groupId = data.docs[0].data().id;
     });
+  }
+
+  addGroup(group){
+    this.db.collection('group').add({...group});
   }
 
   setAssociateGroupId(groupId){

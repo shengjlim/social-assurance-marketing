@@ -26,6 +26,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { CreateAccountPageComponent } from './pages/create-account-page/create-account-page.component';
 import { CreateAccountSuccessDialogComponent } from './components/create-account-success-dialog/create-account-success-dialog.component';
+import { SubmitFormSuccessDialogComponent } from './components/submit-form-success-dialog/submit-form-success-dialog.component';
 import { AssociateLoginPageComponent } from './pages/associate-login-page/associate-login-page.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { AdminLandingPageComponent } from './pages/admin-landing-page/admin-landing-page.component';
@@ -52,6 +53,7 @@ const config = {
     InnovationTrustFormComponent,
     CreateAccountPageComponent,
     CreateAccountSuccessDialogComponent,
+    SubmitFormSuccessDialogComponent,
     AssociateLoginPageComponent,
     AdminLandingPageComponent,
     ViewEntriesPageComponent
@@ -82,6 +84,6 @@ const config = {
     AuthGuardService
   ],
   bootstrap: [AppComponent],
-  entryComponents: [CreateAccountSuccessDialogComponent],
+  entryComponents: [CreateAccountSuccessDialogComponent, SubmitFormSuccessDialogComponent],
 })
 export class AppModule { }
