@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { LoginService } from '../../services/login-service.service';
 import { FormInfoService } from 'src/app/services/form-info.service';
+import { MatDialog } from '@angular/material';
+import { SubmitFormSuccessDialogComponent } from 'src/app/components/submit-form-success-dialog/submit-form-success-dialog.component';
 
 @Component({
   selector: 'app-admin-form-page',
@@ -22,7 +24,7 @@ export class AdminFormPageComponent implements OnInit {
   secondFormGroup: FormGroup;
   thirdFormGroup: FormGroup;
 
-  constructor(private _formBuilder: FormBuilder, private router: Router, public auth: LoginService, private fi : FormInfoService) {
+  constructor(private _formBuilder: FormBuilder, private router: Router, public auth: LoginService, private formService : FormInfoService, public dialog: MatDialog) {
     if(!auth.authenticated){
       this.router.navigate(['/']);
     }
@@ -56,20 +58,29 @@ export class AdminFormPageComponent implements OnInit {
     let innovationTrust = this.secondFormGroup.value as InnovationTrust;
     let personalTrust = this.thirdFormGroup.value as PersonalTrust;  
     
-    // TODO: Set the groupId
-    brandTrust.groupId = '';
-    innovationTrust.groupId = '';
-    personalTrust.groupId = '';
+    brandTrust.groupId = this.auth.groupId;
+    innovationTrust.groupId = this.auth.groupId;
+    personalTrust.groupId = this.auth.groupId;
 
     // Set the personal trust email
     personalTrust.email = this.auth.currentUser.user.email;
 
-    this.fi.putBrandTrustObject(brandTrust);
-    this.fi.putInnovationTrustObject(innovationTrust);
-    this.fi.putPersonalTrustObject(personalTrust);
+    this.formService.putBrandTrustObject(brandTrust);
+    this.formService.putInnovationTrustObject(innovationTrust);
+    this.formService.putPersonalTrustObject(personalTrust);
 
-    // TODO: Popup and email
+    this.openSuccessDialog();
     
     this.router.navigate(['landing']);
+  }
+
+  openSuccessDialog(): void {
+    const dialogRef = this.dialog.open(SubmitFormSuccessDialogComponent, {
+      width: '250px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 }

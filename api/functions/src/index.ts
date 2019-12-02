@@ -21,17 +21,28 @@ let transporter = nodemailer.createTransport({
 
 exports.sendMail = functions.https.onRequest((req: any, res: any) => {
     cors(req, res, () => {
-      
-        // getting dest email by query string
-        const dest = req.query.dest;
+        let personalTrust = req.body;
 
         const mailOptions = {
             from: 'Social Assurance <social.assurance.m.test@gmail.com>', // Something like: Jane Doe <janedoe@gmail.com>
-            to: dest,
-            subject: 'I\'M A PICKLE!!!', // email subject
-            html: `<p style="font-size: 16px;">Pickle Riiiiiiiiiiiiiiiick!!</p>
+            to: personalTrust.email,
+            subject: 'Your Personal Trust Results', // email subject
+            html: `<h2 style="font-size: 24px;">Personal Trust for ${personalTrust.email},</h2>
                 <br />
-                <img src="https://images.prod.meredith.com/product/fc8754735c8a9b4aebb786278e7265a5/1538025388228/l/rick-and-morty-pickle-rick-sticker" />
+                <h3 style="font-size: 18px;">Co-Creation</h3> 
+                <p style="font-size: 14px;">${personalTrust.coCreation}</p>
+                <br/>
+                <h3 style="font-size: 18px;">Commitment</h3> 
+                <p style="font-size: 14px;">${personalTrust.commitment}</p>
+                <br/>
+                <h3 style="font-size: 18px;">Connection</h3> 
+                <p style="font-size: 14px;">${personalTrust.connection}</p>
+                <br/>
+                <h3 style="font-size: 18px;">Consistency</h3> 
+                <p style="font-size: 14px;">${personalTrust.consistency}</p>
+                <br/>
+                <h3 style="font-size: 18px;">Control</h3> 
+                <p style="font-size: 14px;">${personalTrust.control}</p>
             ` // email content in HTML
         };
   

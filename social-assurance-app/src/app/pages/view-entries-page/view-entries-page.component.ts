@@ -22,7 +22,6 @@ export class ViewEntriesPageComponent implements OnInit {
 
   ngOnInit() {
     let groupId = this.auth.getGroupId();
-    groupId = "other";
     this.ts.getPersonalTrust(groupId).get().subscribe(data => {
       let personalAnswersList = [];
       for(let i = 0; i < data.docs.length; i++) {
