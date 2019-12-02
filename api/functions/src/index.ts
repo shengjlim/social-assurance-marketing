@@ -30,7 +30,7 @@ exports.sendMail = functions.https.onRequest((req: any, res: any) => {
             html: `<h2 style="font-size: 24px;">Personal Trust for ${personalTrust.email},</h2>
                 <br />
                 <h3 style="font-size: 18px;">Co-Creation</h3> 
-                <p style="font-size: 14px;">${personalTrust.cocreation}</p>
+                <p style="font-size: 14px;">${personalTrust.coCreation}</p>
                 <br/>
                 <h3 style="font-size: 18px;">Commitment</h3> 
                 <p style="font-size: 14px;">${personalTrust.commitment}</p>

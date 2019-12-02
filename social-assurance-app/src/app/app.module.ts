@@ -31,6 +31,7 @@ import { AssociateLoginPageComponent } from './pages/associate-login-page/associ
 import { AuthGuardService } from './services/auth-guard.service';
 import { AdminLandingPageComponent } from './pages/admin-landing-page/admin-landing-page.component';
 import { ViewEntriesPageComponent } from './pages/view-entries-page/view-entries-page.component';
+import { HttpModule } from '@angular/http';
 
 const config = {
   apiKey: "AIzaSyADw9uZw5RSxoULuhRMufGIrXt85VW9SjQ",
@@ -65,6 +66,7 @@ const config = {
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpModule,
     NgxAuthFirebaseUIModule.forRoot({
       apiKey: environment.firebaseConfig.apiKey,
       authDomain: environment.firebaseConfig.authDomain,
