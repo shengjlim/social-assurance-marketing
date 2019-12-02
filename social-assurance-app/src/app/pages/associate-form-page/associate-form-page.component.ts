@@ -6,6 +6,8 @@ import { LoginService } from '../../services/login-service.service';
 import { Router } from '@angular/router';
 import { TrustService } from 'src/app/services/trust.service';
 import { FormInfoService } from 'src/app/services/form-info.service';
+import { SubmitFormSuccessDialogComponent } from 'src/app/components/submit-form-success-dialog/submit-form-success-dialog.component';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-associate-form-page',
@@ -21,7 +23,7 @@ export class AssociateFormPageComponent implements OnInit {
   id: string;
   email: string;
 
-  constructor(private _formBuilder: FormBuilder, public auth: LoginService, private router: Router, private ts : TrustService, private fi: FormInfoService) { }
+  constructor(private _formBuilder: FormBuilder, public auth: LoginService, private router: Router, private ts : TrustService, private fi: FormInfoService, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.email = this.auth.getAssociateEmail();
@@ -83,9 +85,19 @@ export class AssociateFormPageComponent implements OnInit {
 
     this.fi.putPersonalTrustObject(personalTrust);
 
-    // TODO: Show popup that indicates success before going back to login page
+    this.openSuccessDialog();
     // TODO: Also send email with their results
 
     this.router.navigate(['asssociateLogin'])
+  }
+
+  openSuccessDialog(): void {
+    const dialogRef = this.dialog.open(SubmitFormSuccessDialogComponent, {
+      width: '250px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 }
