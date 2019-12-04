@@ -1,20 +1,26 @@
 #card {
-    width: 30%;
-    height: 80%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 15%;
+  width: 35%;
+  height: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 15%;
+}
+
+@media (max-width: 45em) {
+  #card {
+    width: 90%;
+  }
 }
 
 #field {
-    width: 100%;
+  width: 100%;
 }
 
 #title {
-    text-align: center;
-    margin-top: 2%;
+  text-align: center;
+  margin-top: 2%;
 }
 
 #actions {
-    margin-bottom: 3px;
+  margin-bottom: 3px;
 }

@@ -34,4 +34,8 @@ export class LoginPageComponent implements OnInit {
   createAccount(): void {
     this.router.navigate(['/createAccount']);
   }
+
+  associateLogin(): void {
+    this.router.navigate(['/associatelogin']);
+  }
 }
