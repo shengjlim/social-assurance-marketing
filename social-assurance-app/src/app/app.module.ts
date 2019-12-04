@@ -32,6 +32,7 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { AdminLandingPageComponent } from './pages/admin-landing-page/admin-landing-page.component';
 import { ViewEntriesPageComponent } from './pages/view-entries-page/view-entries-page.component';
 import { HttpModule } from '@angular/http';
+import { AssociateInstructionDialogComponent } from './components/associate-instruction-dialog/associate-instruction-dialog.component';
 
 const config = {
   apiKey: "AIzaSyADw9uZw5RSxoULuhRMufGIrXt85VW9SjQ",
@@ -57,7 +58,8 @@ const config = {
     SubmitFormSuccessDialogComponent,
     AssociateLoginPageComponent,
     AdminLandingPageComponent,
-    ViewEntriesPageComponent
+    ViewEntriesPageComponent,
+    AssociateInstructionDialogComponent
   ],
   imports: [
     BrowserModule,
