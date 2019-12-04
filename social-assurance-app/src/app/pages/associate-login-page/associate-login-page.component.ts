@@ -38,7 +38,7 @@ export class AssociateLoginPageComponent implements OnInit {
     }
   }
 
-  createAccount(): void {
-    this.router.navigate(['/createAccount']);
+  adminLogin(): void {
+    this.router.navigate(['/login']);
   }
 }
