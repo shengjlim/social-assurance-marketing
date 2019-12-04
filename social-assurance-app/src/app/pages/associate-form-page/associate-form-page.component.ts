@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { TrustService } from 'src/app/services/trust.service';
 import { FormInfoService } from 'src/app/services/form-info.service';
 import { SubmitFormSuccessDialogComponent } from 'src/app/components/submit-form-success-dialog/submit-form-success-dialog.component';
+import { AssociateInstructionDialogComponent } from 'src/app/components/associate-instruction-dialog/associate-instruction-dialog.component';
 import { MatDialog } from '@angular/material';
 
 @Component({
@@ -23,16 +24,17 @@ export class AssociateFormPageComponent implements OnInit {
   id: string;
   email: string;
 
-  constructor(private _formBuilder: FormBuilder, public auth: LoginService, private router: Router, private ts : TrustService, private fi: FormInfoService, public dialog: MatDialog) { }
+  constructor(private _formBuilder: FormBuilder, public auth: LoginService, private router: Router, private ts: TrustService, private fi: FormInfoService, public dialog: MatDialog) { }
 
   ngOnInit() {
+    this.openInstructionsDialog();
     this.email = this.auth.getAssociateEmail();
     this.id = this.auth.getGroupId(); //this.auth.getGroupId();
 
-    if(this.id === null || this.email === null){
+    if (this.id === null || this.email === null) {
       this.router.navigate(['associateLogin']);
     }
-    
+
     this.firstFormGroup = this._formBuilder.group({
       associations: [''],
       incitingIncidents: [''],
@@ -98,6 +100,12 @@ export class AssociateFormPageComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
+    });
+  }
+
+  openInstructionsDialog(): void {
+    const dialogRef = this.dialog.open(AssociateInstructionDialogComponent, {
+      width: '800px',
     });
   }
 }

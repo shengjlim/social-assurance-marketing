@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'app-associate-instruction-dialog',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AssociateInstructionDialogComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialog: MatDialog, public dialogRef: MatDialogRef<AssociateInstructionDialogComponent>, ) { }
 
   ngOnInit() {
+  }
+
+  close() {
+    this.dialogRef.close();
   }
 
 }

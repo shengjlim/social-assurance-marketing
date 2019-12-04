@@ -88,6 +88,6 @@ const config = {
     AuthGuardService
   ],
   bootstrap: [AppComponent],
-  entryComponents: [CreateAccountSuccessDialogComponent, SubmitFormSuccessDialogComponent],
+  entryComponents: [CreateAccountSuccessDialogComponent, SubmitFormSuccessDialogComponent, AssociateInstructionDialogComponent],
 })
 export class AppModule { }
