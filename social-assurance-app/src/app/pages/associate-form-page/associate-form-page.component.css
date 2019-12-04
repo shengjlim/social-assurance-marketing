@@ -1,10 +1,16 @@
 #form {
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 9%;
-    width: 65%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 9%;
+  width: 65%;
+}
+
+@media (max-width: 45em) {
+  #form {
+    width: 90%;
+  }
 }
 
 #buttons {
-    float: right;
+  float: right;
 }
