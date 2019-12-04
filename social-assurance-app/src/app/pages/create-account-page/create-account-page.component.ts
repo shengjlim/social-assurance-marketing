@@ -49,6 +49,10 @@ export class CreateAccountPageComponent implements OnInit {
     }
   }
 
+  backToLogin(): void {
+    this.router.navigate(['/login']);
+  }
+
   openSuccessDialog(id): void {
     const dialogRef = this.dialog.open(CreateAccountSuccessDialogComponent, {
       width: '250px',
