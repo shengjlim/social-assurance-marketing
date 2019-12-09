@@ -69,6 +69,8 @@ export class AdminFormPageComponent implements OnInit {
     this.formService.putInnovationTrustObject(innovationTrust);
     this.formService.putPersonalTrustObject(personalTrust);
 
+    this.formService.sendPersonalTrustEmail(personalTrust, brandTrust, innovationTrust)
+
     this.openSuccessDialog();
     
     this.router.navigate(['landing']);

@@ -23,7 +23,6 @@ export class FormInfoService {
       }
       this.db.collection('personal').add(personalTrust);
     });
-    this.sendPersonalTrustEmail(personalTrust);
   }
 
   putBrandTrustObject(brandTrust){
@@ -54,7 +53,7 @@ export class FormInfoService {
     });
   }
 
-  sendPersonalTrustEmail(personalTrust){
-    this.http.post('https://us-central1-social-assurance.cloudfunctions.net/sendMail', personalTrust).subscribe();
+  sendPersonalTrustEmail(personalTrust, brandTrust, innovationTrust){
+    this.http.post('https://us-central1-social-assurance.cloudfunctions.net/sendMail', [personalTrust, brandTrust, innovationTrust]).subscribe();
   }
 }

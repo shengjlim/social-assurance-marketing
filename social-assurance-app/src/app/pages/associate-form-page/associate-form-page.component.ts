@@ -9,6 +9,8 @@ import { FormInfoService } from 'src/app/services/form-info.service';
 import { SubmitFormSuccessDialogComponent } from 'src/app/components/submit-form-success-dialog/submit-form-success-dialog.component';
 import { AssociateInstructionDialogComponent } from 'src/app/components/associate-instruction-dialog/associate-instruction-dialog.component';
 import { MatDialog } from '@angular/material';
+import { BrandTrust } from 'src/app/models/brand-trust';
+import { InnovationTrust } from 'src/app/models/innovation-trust';
 
 @Component({
   selector: 'app-associate-form-page',
@@ -80,12 +82,16 @@ export class AssociateFormPageComponent implements OnInit {
 
   onSubmit() {
     let personalTrust = this.thirdFormGroup.value as PersonalTrust;
+    let innovationTrust = this.secondFormGroup.value as InnovationTrust;
+    let brandTrust = this.firstFormGroup.value as BrandTrust;
 
     // Setting the email and groupId of the associate
     personalTrust.email = this.email;
     personalTrust.groupId = this.id;
 
     this.fi.putPersonalTrustObject(personalTrust);
+
+    this.fi.sendPersonalTrustEmail(personalTrust, brandTrust, innovationTrust)
 
     this.openSuccessDialog();
     // TODO: Also send email with their results
